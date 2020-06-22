@@ -40,15 +40,16 @@ const App = () => {
     for (var value of formData.values()) {
       console.log(value);
     }
-    // let response = await fetch("./test.php", {
-    //   credentials: "same-origin",
-    //   method: "POST",
-    //   body: formData,
-    // });
 
-    // let result = await response.json();
+    let response = await fetch("./submit.php", {
+       credentials: "same-origin",
+       method: "POST",
+       body: formData,
+    });
 
-    // console.log(result);
+    let result = await response.json();
+
+    console.log(result);
   }
 
   let content = (
