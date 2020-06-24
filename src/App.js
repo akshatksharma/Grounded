@@ -5,7 +5,7 @@ import { ReactMic } from "react-mic";
 const App = () => {
   const [recordBlob, setrecordBlob] = useState();
   const [recording, setRecording] = useState(false);
-  const { values, handleChange, handleSubmit } = useForm(submit);
+  const { values, handleChange, handleSubmit } = useForm();
 
   let formData = new FormData();
 
@@ -41,7 +41,8 @@ const App = () => {
       console.log(value);
     }
 
-    let response = await fetch("./submit.php", {
+    //404 error - cannot find index.php. Moved index.php from src to public but still got this error 
+    let response = await fetch("index.php", {
        credentials: "same-origin",
        method: "POST",
        body: formData,
