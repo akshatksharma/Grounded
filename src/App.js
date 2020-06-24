@@ -5,7 +5,7 @@ import { ReactMic } from "react-mic";
 const App = () => {
   const [recordBlob, setrecordBlob] = useState();
   const [recording, setRecording] = useState(false);
-  const { values, handleChange, handleSubmit } = useForm();
+  const { values, handleChange, handleSubmit } = useForm(submit);
 
   let formData = new FormData();
 
