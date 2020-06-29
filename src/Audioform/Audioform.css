@@ -1,0 +1,60 @@
+.recorder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0px auto;
+  margin-top: 20px;
+  padding: 10px;
+
+  --flow-space: 2em;
+}
+
+.recorder p {
+  --flow-space: 0px;
+}
+
+.recorder__mic {
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+  border: 3px solid black;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recorder__mic--recording {
+  border: 3px solid #e53e3e;
+}
+
+.recording {
+  color: #e53e3e;
+}
+
+.recorder__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recorder__button > * {
+  margin-right: 10px;
+}
+
+.recorder__control {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.audioPlayback {
+  /* width: 100%; */
+}
+
+.time {
+  margin-top: 0px;
+  font-size: 36px;
+}

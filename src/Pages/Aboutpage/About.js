@@ -61,7 +61,6 @@ const About = () => {
       </div>
     </React.Fragment>
   );
-
   return content;
 };
 

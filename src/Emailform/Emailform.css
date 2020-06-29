@@ -1,0 +1,65 @@
+.emailForm {
+  --flow-space: 0.75rem;
+}
+
+.emailForm__inputs {
+  --flow-space: 1rem;
+}
+
+.emailForm
+  input:not([type="checkbox"]):not([type="submit"]):not([type="file"]) {
+  display: block;
+  margin-top: 0px;
+  width: 100%;
+}
+
+.submitWrapper {
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkbox__label {
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+
+.checkbox__box--release {
+  margin-right: 12px;
+}
+
+.checkbox__box--anon {
+  margin-right: 6px;
+}
+
+.submitText {
+  margin: 40px auto 20px auto;
+}
+
+.submitText .flow {
+  --flow-space: 1rem;
+}
+
+#submit {
+  opacity: 0;
+  position: absolute;
+}
+
+.submitButton {
+  margin-top: 20px;
+  display: inline-flex;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .submitButton {
+    margin: 0px;
+  }
+  .submitWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
