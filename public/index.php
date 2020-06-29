@@ -1,15 +1,22 @@
 <?php
 
     //all this script does right now is read in the form data and then return a success
+    //header("Access-Control-Allow-Origin: *");
+    //header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 	header('Content-Type: application/json');
 	//require 'database.php';
 
 	//get user-submitted data from json
-	$formData = file_get_contents('php://input');
-    
+	$json_str = file_get_contents('php://input');
+    $json_obj = json_decode($json_str, true);
+
+    $name = $json_obj["name"];
+    $email = $json_obj["email"];
+
     echo json_encode(array(
 		"success" => true,
-		"data" => $formData
+        "name" => $name,
+        "email" => $email
 	));
 
 	/*

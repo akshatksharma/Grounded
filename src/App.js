@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useForm from "./hooks/useForm";
 import { ReactMic } from "react-mic";
+import axios from "axios";
 
 const App = () => {
   const [recordBlob, setrecordBlob] = useState();
@@ -23,13 +24,13 @@ const App = () => {
 
   const onStop = (recordedBlob) => {
     console.log("recordedBlob is: ", recordedBlob);
-    setrecordBlob(recordedBlob);
+      setrecordBlob(recordedBlob);
   };
 
   async function submit() {
     formData.append("name", values.name);
     formData.append("email", values.email);
-    formData.append("recording", recordBlob);
+    formData.append("recording", recordBlob.blob)
 
     console.log("user values");
     console.log(values);
@@ -41,16 +42,16 @@ const App = () => {
       console.log(value);
     }
 
-    //404 error - cannot find index.php. Moved index.php from src to public but still got this error 
-    let response = await fetch("index.php", {
-       credentials: "same-origin",
-       method: "POST",
-       body: formData,
-    });
-
-    let result = await response.json();
-
-    console.log(result);
+    
+    fetch("http://localhost:9000/submitAudio",
+        {
+            method: 'POST',
+            headers: { 'enctype': 'multipart/form-data' },
+            body: formData
+        })
+    .then((res) => res.json())
+    .then(res => console.log(res))
+    .catch(err => err);
   }
 
   let content = (
@@ -73,6 +74,7 @@ const App = () => {
         className="sound-wave"
         onStop={onStop}
         onData={onData}
+        mimeType="audio/mp3"
         strokeColor="#000000"
         backgroundColor="#FF4081"
       />
