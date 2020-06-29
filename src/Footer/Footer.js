@@ -2,9 +2,16 @@ import React from "react";
 import "./Footer.css";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   let content = (
     <div className="footer">
-      <a className="flow" href="#header">
+      <a className="flow" onClick={scrollToTop}>
         <svg
           width="53"
           height="45"

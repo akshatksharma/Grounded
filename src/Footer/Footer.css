@@ -3,6 +3,7 @@
   width: 100%;
   background: #ffdca0;
   padding: 50px;
+  scroll-snap-align: end;
 }
 
 .footer a {
