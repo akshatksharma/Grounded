@@ -2,6 +2,7 @@
 html,
 body {
   background-color: #fff7e9;
+  scroll-snap-type: y mandatory;
 }
 
 div.transition-group {
@@ -133,7 +134,10 @@ input[type="text"]:focus.error {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* scroll-snap-stop: always; */
+  scroll-snap-align: center;
 }
+
 
 .box {
   background-color: #fdfdfd;

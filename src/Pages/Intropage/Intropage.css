@@ -4,6 +4,7 @@
   background-color: #fdfdfd;
   margin: 0 auto;
   padding: 50px;
+  /* scroll-snap-align: none; */
 }
 
 .intro {

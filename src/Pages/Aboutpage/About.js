@@ -12,7 +12,7 @@ const About = () => {
           <div className="contactinfo column">
             <div className="box_outside">
               <div className="box_content flow">
-                <div className="box_title">Contact Info:</div>
+                <div className="box_title">Contact Info</div>
                 <div className="contactinfo__email">
                   <div className="box_sub_title">Email:</div>
                   <a

@@ -125,12 +125,14 @@ const Audioform = (props) => {
   let content = (
     <div className="recorder flow">
       <p>{recordText()}</p>
-      <Timer
-        isRecording={recording}
-        isStarted={started}
-        isFinished={finished}
-        timeout={stop}
-      />
+      {recording || finished || started ? (
+        <Timer
+          isRecording={recording}
+          isStarted={started}
+          isFinished={finished}
+          timeout={stop}
+        />
+      ) : null}
       <div
         className={
           recording

@@ -48,4 +48,4 @@ const Intropage = () => {
   return content;
 };
 
-export default  React.memo(Intropage);
+export default React.memo(Intropage);

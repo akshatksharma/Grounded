@@ -1,8 +1,9 @@
 .headerbar {
+  scroll-snap-align: start;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 75px;
 
   /* margin-bottom: 40px; */
