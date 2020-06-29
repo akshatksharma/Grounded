@@ -1,0 +1,260 @@
+#root,
+html,
+body {
+  background-color: #fff7e9;
+  scroll-snap-type: y mandatory;
+}
+
+div.transition-group {
+  position: relative;
+}
+section.route-section {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 800ms ease;
+}
+
+input[type="email"],
+input[type="text"] {
+  height: 40px;
+  border: none;
+  border-bottom: 2px solid #ffc259;
+  background: #fff7e9;
+
+  padding-left: 5px;
+}
+
+input[type="email"].error,
+input[type="text"].error {
+  background: #fff5f5 !important;
+  border: 1px solid red;
+}
+input[type="email"]:focus.error,
+input[type="text"]:focus.error {
+  background: #fff5f5 !important;
+  outline: 1px solid red;
+}
+
+.button.disabled {
+  cursor: not-allowed;
+  border: 1px solid red;
+  background: #fff5f5;
+}
+
+.flow {
+  --flow-space: 1rem;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space);
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text {
+  color: black;
+
+  font-size: calc(16px + (18 - 16) * ((100vw - 640px) / (1280 - 640)));
+  line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.text--intro {
+  font-size: 18px;
+}
+
+.text--small {
+  font-size: 14px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.important {
+  color: #ffc259;
+}
+
+.button {
+  /* color: #6f6f6e; */
+  padding: 10px 50px;
+  border: 2px solid #ffc259;
+  background: #fff7e9;
+  cursor: pointer;
+}
+.title {
+  /* font-size: 48px; */
+  font-size: calc(48px + (72 - 48) * ((100vw - 640px) / (1280 - 640)));
+  line-height: calc(1.2em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+  letter-spacing: 2px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  border-bottom: 4px solid black;
+
+  text-shadow: 0.3vw 0.4vw #000;
+}
+
+.subtitle {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+/*  */
+
+.page {
+  width: 100%;
+  background-color: #fff7e9;
+  margin: 50px auto;
+  padding: 0px 25px;
+
+  padding-top: 10px;
+  --flow-space: 4rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* scroll-snap-stop: always; */
+  scroll-snap-align: center;
+}
+
+
+.box {
+  background-color: #fdfdfd;
+  width: 100%;
+  max-width: 860px;
+  border: 1px solid black;
+
+  padding: 20px;
+  --flow-space: 1.2rem;
+
+  box-shadow: -10px 10px #ffc259;
+}
+
+.page--story .box {
+  padding-bottom: 40px;
+}
+
+.box__header {
+  position: relative;
+  display: inline-block;
+}
+
+.header__title {
+  z-index: 2;
+  position: relative;
+  font-size: calc(28px + (48 - 28) * ((100vw - 640px) / (1280 - 640)));
+  line-height: calc(1.3em + (1.5 - 1.3) * ((100vw - 300px) / (1600 - 300)));
+
+  font-weight: 700;
+}
+
+.header__background {
+  z-index: 1;
+  position: absolute;
+  top: 41%;
+  left: -1%;
+  width: 100%;
+  min-height: 14px;
+  height: 50%;
+  background: #ffdca0;
+}
+
+.box__text {
+  --flow-space: 1rem;
+}
+
+/* Small (mdsm) */
+@media (min-width: 640px) {
+  .page {
+    max-width: 640px;
+    height: 100%;
+  }
+
+  .page--intro {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .box__content {
+    width: 66%;
+  }
+}
+
+/* Medium (md) */
+@media (min-width: 768px) {
+  .page {
+    max-width: 768px;
+    height: 100%;
+  }
+
+  .page--intro {
+    max-width: 100%;
+  }
+}
+
+/* Large (lg) */
+@media (min-width: 1024px) {
+  .text {
+    /* font-size: 18px; */
+  }
+  .page {
+    max-width: 1024px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page--intro {
+    max-width: 100%;
+  }
+
+  .box {
+    --flow-space: 2rem;
+    min-height: 500px;
+  }
+
+  .imageUpload {
+    margin-top: 100px;
+  }
+}
+
+/* Extra Large (xl) */
+@media (min-width: 1280px) {
+  .page {
+    max-width: 1280px;
+    height: 100%;
+  }
+  .page--intro {
+    max-width: 100%;
+  }
+}
