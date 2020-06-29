@@ -1,0 +1,35 @@
+.page--intro {
+  min-height: calc(100vh - 124px);
+  justify-content: flex-start;
+  background-color: #fdfdfd;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.intro {
+  margin: 0px auto;
+  max-width: 350px;
+  --flow-space: 0.8rem;
+  background-color: #fdfdfd;
+}
+
+.nextSection {
+  --flow-space: 0.5em;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arrow__line {
+  animation: point 1.5s infinite alternate linear;
+}
+
+@keyframes point {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}

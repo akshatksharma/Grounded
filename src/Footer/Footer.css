@@ -1,0 +1,12 @@
+.footer {
+  height: 300px;
+  width: 100%;
+  background: #ffdca0;
+  padding: 50px;
+}
+
+.footer a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

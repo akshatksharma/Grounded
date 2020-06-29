@@ -1,0 +1,25 @@
+.headerbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+
+  /* margin-bottom: 40px; */
+  padding: 40px;
+  padding-bottom: 28px;
+
+  background-color: #ffc259;
+}
+
+.headerbar a {
+  padding: 10px;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+
+  color: black;
+}
+
+.headerbar__title {
+  text-transform: uppercase;
+}

@@ -1,0 +1,38 @@
+.textInput {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textStory {
+  padding: 10px;
+  width: 67%;
+  max-width: 80%;
+  min-height: 170px;
+}
+
+.saveArea {
+  display: flex;
+  justify-content: space-between;
+  width: 67%;
+}
+
+.savedTime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.button--save {
+  display: inline-block;
+  padding: 10px;
+}
+
+.button--save:active {
+  background-color: #fff7e9;
+}
+
+.checkbox__box--text {
+  margin-right: 10px;
+}
