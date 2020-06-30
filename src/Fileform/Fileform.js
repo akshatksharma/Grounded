@@ -20,7 +20,7 @@ const Fileform = (props) => {
         })
       )
     );
-    props.dataUpdater(["image", acceptedFiles]);
+    props.dataUpdater(["image", acceptedFiles[0]]);
   };
 
   const {
