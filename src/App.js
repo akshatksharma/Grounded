@@ -18,6 +18,7 @@ const App = () => {
 
   const updateData = (items) => {
     const [type, data] = items;
+    console.log(typeof data);
     formData.set(type, data);
   };
 

@@ -18,6 +18,7 @@ const About = () => {
                   <a
                     href="mailto:groundedarchives@gmail.com?subject=Question"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     groundedarchives@gmail.com
                   </a>

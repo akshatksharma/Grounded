@@ -11,7 +11,7 @@ const Footer = () => {
   };
   let content = (
     <div className="footer">
-      <a className="flow" onClick={scrollToTop}>
+      <div className="flow" onClick={scrollToTop}>
         <svg
           width="53"
           height="45"
@@ -26,7 +26,7 @@ const Footer = () => {
           />
         </svg>
         <p className="text bold">Back to Top</p>
-      </a>
+      </div>
     </div>
   );
   return content;
