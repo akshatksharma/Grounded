@@ -1,8 +1,15 @@
 import React from "react";
 import "./About.css";
+import AudioPlayer from "react-h5-audio-player";
 
 const About = () => {
+  const planneraudio = new Audio("../../Samples/Planner.m4a");
+  const lauraaudio = new Audio("../../Samples/Mom's_Garden.m4a");
+  const angelaaudio = new Audio("../../Samples/Plant_Object_Angela.mp3");
+
+
   let content = (
+
     <React.Fragment>
       <div className="page page--about flow">
         <h1 className="subtitle subtitle--about bold text--center">
@@ -56,12 +63,46 @@ const About = () => {
           Example Submissions
         </h1>
         <div className="column">
-          <div className="example_back"></div>
+          <div className="example_back">
+            <div className="audioCol">
+              <div className="audioPlayer1">
+                <img src="Picture1.png" alt="A floral planner" className="audioimage" id="plannerpic"></img>
+                <div className="audioControls">
+                  <audio controls>
+                    <source src="../../Samples/Planner.m4a" id="planner"></source>
+                  </audio>
+                </div>
+              </div>
+            </div>
+
+            <br></br>
+            <div className="audioCol">
+              <div className="audioPlayer2">
+                <img src="Picture2.png" alt="An 8x8 garden box" className="audioimage" id="gardenpic"></img>
+                <div className="audioControls">
+                  <audio controls>
+                    <source src="../../Samples/Mom's_Garden.m4a" id="garden"></source>
+                  </audio>
+                </div>
+              </div>
+            </div>
+            <br></br>
+            <div className="audioCol">
+              <div className="audioPlayer2">
+                <img src="Picture3.png" alt="A succulent plant" className="audioimage" id="cactuspic"></img>
+                <div className="audioControls">
+                  <audio controls>
+                <source src="../../Samples/Plant_Object_Angela.mp4" id="plant"></source>
+                </audio>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </React.Fragment>
+    </React.Fragment >
   );
-  return content;
+return content;
 };
 
 export default React.memo(About);
