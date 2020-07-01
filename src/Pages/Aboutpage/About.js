@@ -1,5 +1,10 @@
 import React from "react";
 import "./About.css";
+import Fade from "react-reveal/Fade";
+
+import sound1 from "../../Samples/Planner.m4a";
+import sound2 from "../../Samples/Mom's_Garden.m4a";
+import sound3 from "../../Samples/Plant_Object_Angela.mp3";
 
 const About = () => {
   let content = (
@@ -56,8 +61,60 @@ const About = () => {
         <h1 className="subtitle subtitle--about bold text--center">
           Example Submissions
         </h1>
-        <div className="column">
-          <div className="example_back"></div>
+        <div className="example_back">
+          <div className="audioPlayer">
+            <div className="header__title header__title--sample">Planner</div>
+            <div className="imageCrop">
+              <img
+                src="Picture1.png"
+                alt="A floral planner"
+                className="audioimage"
+                id="plannerpic"
+              ></img>
+            </div>
+
+            <div className="audioControls">
+              <audio controls>
+                <source src={sound1} id="planner"></source>
+              </audio>
+            </div>
+          </div>
+          <div className="audioPlayer">
+            <div className="header__title header__title--sample">
+              Mom's Garden
+            </div>
+
+            <div className="imageCrop">
+              <img
+                src="Picture2.png"
+                alt="An 8x8 garden box"
+                className="audioimage"
+                id="gardenpic"
+              ></img>
+            </div>
+            <div className="audioControls">
+              <audio controls>
+                <source src={sound2} id="garden"></source>
+              </audio>
+            </div>
+          </div>
+          <div className="audioPlayer">
+            <div className="header__title header__title--sample">Plant</div>
+
+            <div className="imageCrop">
+              <img
+                src="Picture3.png"
+                alt="A succulent plant"
+                className="audioimage"
+                id="cactuspic"
+              ></img>
+            </div>
+            <div className="audioControls">
+              <audio controls>
+                <source src={sound3} id="plant"></source>
+              </audio>
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>

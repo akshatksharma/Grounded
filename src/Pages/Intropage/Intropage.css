@@ -23,7 +23,7 @@
 }
 
 .arrow__line {
-  animation: point 1.5s infinite alternate linear;
+  animation: point 1s infinite alternate linear;
 }
 
 @keyframes point {
