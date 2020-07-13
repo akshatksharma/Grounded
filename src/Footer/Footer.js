@@ -8,13 +8,13 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scroll({
+  //     top: 0,
+  //     left: 0,
+  //     behavior: "smooth",
+  //   });
+  // };
   let content = (
     <div className="footer ">
       <div className="footer__content flow">
@@ -55,7 +55,7 @@ const Footer = () => {
             </a>
           </p>
         </div>
-        <div className="scrolltop flow" onClick={scrollToTop}>
+        {/* <div className="scrolltop flow" onClick={scrollToTop}>
           <svg
             width="53"
             height="45"
@@ -70,7 +70,7 @@ const Footer = () => {
             />
           </svg>
           <p className="footer__title bold">Back to Top</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
