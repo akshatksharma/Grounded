@@ -22,16 +22,19 @@ const Footer = () => {
           <h1 className="footer__title">Follow Us</h1>
           <div className="footer__icons">
             <FontAwesomeIcon
+              className="twitter"
               style={{ color: "000" }}
               icon={faTwitter}
               size={"2x"}
             />
             <FontAwesomeIcon
+            className="facebook"
               style={{ color: "000" }}
               icon={faFacebook}
               size={"2x"}
             />
             <FontAwesomeIcon
+            className="instagram"
               style={{ color: "000" }}
               icon={faInstagram}
               size={"2x"}

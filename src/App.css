@@ -98,10 +98,17 @@ input[type="text"]:focus.error {
 .button {
   /* color: #6f6f6e; */
   padding: 10px 50px;
+  background: #fdfdfd;
   border: 2px solid #ffc259;
-  background: #fff7e9;
   cursor: pointer;
+  transition: 0.3s;
 }
+
+.button:hover,
+.button:focus {
+  background: #fff7e9;
+}
+
 .title {
   /* font-size: 48px; */
   font-size: calc(48px + (72 - 48) * ((100vw - 640px) / (1280 - 640)));

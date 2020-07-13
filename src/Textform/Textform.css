@@ -8,8 +8,8 @@
 .textStory {
   padding: 10px;
   width: 67%;
-  max-width: 80%;
-  min-height: 170px;
+  resize: vertical;
+  min-height: 164px;
 }
 
 .saveArea {
@@ -29,8 +29,11 @@
   padding: 10px;
 }
 
-.button--save:active {
+.button--save:focus,
+.button--save:hover {
   background-color: #fff7e9;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
 .checkbox__box--text {

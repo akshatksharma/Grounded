@@ -50,9 +50,9 @@ const Audioform = (props) => {
   }, [props, audioBlob]);
 
   const recordText = () => {
-    let text = recording ? "Recording..." : null;
-    if (!recording && started) text = "Paused";
-    if (finished) text = "Recording Saved";
+    let text = recording ? <p>Recording...</p> : null;
+    if (!recording && started) text = <p>Paused</p>;
+    if (finished) text = <p>Recording Saved</p>;
 
     return text;
   };
@@ -118,13 +118,17 @@ const Audioform = (props) => {
   const playback = () => {
     if (audioBlob) {
       const audioURL = URL.createObjectURL(audioBlob);
-      return <audio className="audioPlayback" controls src={audioURL}></audio>;
+      return (
+        <div classname="audioPreview">
+          <h1 style={{ marginLeft: "20px" }}>Preview</h1>
+          <audio className="audioPlayback" controls src={audioURL}></audio>
+        </div>
+      );
     } else return;
   };
 
   let content = (
     <div className="recorder flow">
-      <p>{recordText()}</p>
       {recording || finished || started ? (
         <Timer
           isRecording={recording}
@@ -146,6 +150,7 @@ const Audioform = (props) => {
           className={recording ? "recording" : "idle"}
         />
       </div>
+      {recordText()}
       {controlBar()}
       {playback()}
     </div>

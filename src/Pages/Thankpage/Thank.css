@@ -24,10 +24,29 @@
   margin-bottom: 5px;
 }
 
-.box a.text {
-  color: blue;
+/* $link-color: #37b2b2; */
+
+.box__text a.text {
+  color: #ffa50a;
   cursor: pointer;
-  font-size: 14px;
+  text-shadow: rgb(255, 255, 255) 1px 0px 0px,
+    rgb(255, 255, 255) 0.540302px 0.841471px 0px,
+    rgb(255, 255, 255) -0.416147px 0.909297px 0px,
+    rgb(255, 255, 255) -0.989992px 0.14112px 0px,
+    rgb(255, 255, 255) -0.653644px -0.756802px 0px,
+    rgb(255, 255, 255) 0.283662px -0.958924px 0px,
+    rgb(255, 255, 255) 0.96017px -0.279415px 0px;
+  text-decoration: none;
+  background-image: linear-gradient(#ffa50a 50%, #ffa50a 50%);
+  background-size: 10000px 1px;
+  background-repeat: no-repeat;
+  background-position: 0 1em;
+  background-position: -10000px 1.1em;
+}
+.box a.text:hover,
+.box a.text:focus {
+  background-position: 0 1.1em;
+  transition: background-position 3s ease-in-out;
 }
 
 .socialmedia {
@@ -50,9 +69,14 @@
   cursor: pointer;
 }
 
-.sharebtn > *:hover,
-.sharebtn > *:focus {
-  opacity: 0.9 !important;
+.sharebtn--twitter svg {
+  color: #1da1f2;
+  transition: 0.3s;
+}
+
+.sharebtn--twitter :hover,
+.sharebtn-twitter :focus {
+  color: #0d94e7;
 }
 
 .sharebtn:active {
@@ -63,6 +87,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.sharebtn--ig svg {
+  color: #e1306c;
+  transition: 0.3s;
+}
+
+.sharebtn--ig :hover,
+.sharebtn--ig :focus {
+  color: #d61f5c;
+}
+
+.sharebtn--facebook svg {
+  color: #4267b2;
+  transition: 0.3s;
+}
+
+.sharebtn--facebook svg:hover,
+.sharebtn--facebook svg:focus {
+  color: #3d5fa4;
+}
+
+.sharebtn--email svg {
+  color: #999896;
+  transition: 0.3s;
+}
+
+.sharebtn--email svg:hover,
+.sharebtn--email svg:focus {
+  color: #908f8e;
 }
 
 .box a.button {

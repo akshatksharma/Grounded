@@ -1,13 +1,19 @@
 .recorder {
+  min-width: 275px;
+  width: 55%;
+  min-height: 275px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
-  margin: 0px auto;
-  margin-top: 20px;
+  margin: 20px auto;
   padding: 10px;
 
   --flow-space: 2em;
+  background: rgba(250, 250, 250, 1);
+  border: 2px solid rgb(238, 238, 238);
+  border-radius: 2px;
 }
 
 .recorder p {
@@ -20,7 +26,7 @@
 
   border-radius: 50%;
   border: 3px solid black;
-  margin-top: 10px;
+  margin: 10px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,9 +41,17 @@
 }
 
 .recorder__button {
+  min-width: 125px;
+  padding: 10px 12px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.recorder__button:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
 }
 
 .recorder__button > * {
@@ -47,11 +61,7 @@
 .recorder__control {
   display: flex;
   justify-content: space-between;
-  width: 200px;
-}
-
-.audioPlayback {
-  /* width: 100%; */
+  width: 250px;
 }
 
 .time {

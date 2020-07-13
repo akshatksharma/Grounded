@@ -11,6 +11,7 @@
 .footer__title {
   font-size: 20px;
   margin-bottom: 10px;
+  opacity: 0.85;
 }
 
 .footer .scrolltop {
@@ -23,6 +24,18 @@
 .footer__icons * {
   margin-left: 5px;
   margin-right: 5px;
+  opacity: 0.85;
+  transition: 0.3s;
+}
+
+.footer__icons *:hover,
+.footer__icons *:focus {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.contactUs .text a {
+  color: #4a5568;
 }
 
 @media (min-width: 640px) {

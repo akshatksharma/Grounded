@@ -82,11 +82,7 @@ const Thank = () => {
             title={shareText}
             hashtags={["groundedarchive"]}
           >
-            <FontAwesomeIcon
-              style={{ color: "1DA1F2" }}
-              icon={faTwitterSquare}
-              size={"3x"}
-            />
+            <FontAwesomeIcon icon={faTwitterSquare} size={"3x"} />
           </TwitterShareButton>
           <FacebookShareButton
             className="sharebtn sharebtn--facebook"
@@ -94,11 +90,7 @@ const Thank = () => {
             quote={shareText}
             hashtag="#groundedarchive"
           >
-            <FontAwesomeIcon
-              style={{ color: "4267B2" }}
-              icon={faFacebookSquare}
-              size={"3x"}
-            />
+            <FontAwesomeIcon icon={faFacebookSquare} size={"3x"} />
           </FacebookShareButton>
           <InstagramShareButton show={toggleModal}></InstagramShareButton>
           <a
@@ -108,7 +100,7 @@ const Thank = () => {
             href="mailto:?subject=Grounded%3A%20The%20Pandemic%20Archive&body=I%20contributed%20my%20voice%20to%20%22Grounded%3A%20The%20Pandemic%20Archive%22%20because%20my%20story%20matters%20--%20and%20yours%20does%20too.%0D%0A%0D%0AThe%20crises%20of%20Covid-19%2C%20economic%20hardship%2C%20and%20the%20fight%20for%20racial%20justice%20have%20forced%20us%20to%20find%20new%20meaning%20in%20the%20spaces%20we%20inhabit%20and%20the%20objects%20that%20surround%20us.%20Add%20your%20voice%20to%20the%20historical%20record%20by%20archiving%20an%20object%20that%20tells%20your%20story.%0D%0A%0D%0Awww.groundedarchive.com"
           >
             <FontAwesomeIcon
-              style={{ color: "999896" }}
+              className="sharebtn--email"
               icon={faEnvelopeSquare}
               size={"3x"}
             />

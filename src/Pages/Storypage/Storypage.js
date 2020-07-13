@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare, faCheckSquare } from "@fortawesome/free-regular-svg-icons";
 import Audioform from "../../Audioform/Audioform.js";
 import Textform from "../../Textform/Textform.js";
+import "./Storypage.css"
 
 const Storypage = (props) => {
   const [usingAudio, setUsingAudio] = useState(true);
