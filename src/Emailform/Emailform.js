@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Redirect } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquare, faCheckSquare } from "@fortawesome/free-regular-svg-icons";
+
 import useForm from "../Hooks/useForm";
 import "./Emailform.css";
 
@@ -64,45 +63,16 @@ const Emailform = (props) => {
           </div>
         </div>
         <div className="submitText">
-          <div className="flow">
+          <div className=" box__text flow">
             <p className="text">
-              We hope to use this archive to better understand the ways people
-              have responded to this uncertain time, through research, community
-              action, and potentially in-person art installations in the future.
-            </p>
-            <p className="text">
-              If you wish for your materials to be excluded from research,
-              exhibitions, and events, please opt out below:
+              In addition to sharing the stories of a diverse global community,
+              we hope to use this archive to understand the ways people have
+              responded to this uncertain time, through research, community
+              action, and art installations.
             </p>
           </div>
         </div>
         <div className="submitWrapper">
-          <div className="checkbox releaseform">
-            <label
-              className="checkbox__label"
-              htmlFor="releaseform"
-              onChange={releaseCheck}
-            >
-              <input
-                id="releaseform"
-                type="checkbox"
-                name="releaseform"
-                value="do-not-allow"
-                onChange={handleCheck}
-              ></input>
-              <div className="checkbox__box--release">
-                {isRelease ? (
-                  <FontAwesomeIcon icon={faCheckSquare} size="lg" />
-                ) : (
-                  <FontAwesomeIcon icon={faSquare} size="lg" />
-                )}
-              </div>
-              <p className="text--small">
-                I do not release my submission for research or inclusion in
-                future exhibitions
-              </p>
-            </label>
-          </div>
           <div className="submitButton">
             <label
               ref={submitRef}

@@ -14,12 +14,9 @@ const Objectpage = (props) => {
           <div className="box__text flow">
             <p className="text">
               It can be anything (an item, a room, a smell, a sound) that has
-              gained or lost meaning to you since the pandemic began.​
+              gained or lost meaning to you since the pandemic began. 
             </p>
-            <p className="text">
-              Submit an image of your item or submit an audio or video recording
-              featuring the object.
-            </p>
+            <p className="text">Submit an image of your object.</p>
           </div>
         </div>
         <Fileform dataUpdater={props.updateData} />
@@ -29,4 +26,4 @@ const Objectpage = (props) => {
   return content;
 };
 
-export default  React.memo(Objectpage);
+export default React.memo(Objectpage);

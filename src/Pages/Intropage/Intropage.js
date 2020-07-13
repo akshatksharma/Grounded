@@ -9,21 +9,19 @@ const Intropage = () => {
         <p className="text--intro text--center">
           The stories of global events are often found in the objects left
           behind: artifacts in museums, keepsakes passed through families, homes
-          that withstood war, famine, or plague.​ Recent events have forced many
+          that withstood war, famine, or plague. Recent events have forced many
           of us to find new meaning in the spaces we inhabit and the objects
-          that surround us.​
+          that surround us.
         </p>
         <p className="text--intro text--center">
           “Grounded: The Pandemic Archive” is our effort to assemble a living
-          archive of the objects that tell the stories of this time.​
+          archive of the objects that tell stories of home and hardship amid the
+          ongoing battles for health, community, and justice.
         </p>
         <p className="text--intro text--center">
           We invite you to find and preserve an object that holds a piece of
           your story, and add your voice to history.
         </p>
-        {/* <p className="text text--center">
-          This experience will only take ~ 5 minutes.
-        </p> */}
       </div>
       <div className="nextSection flow">
         <p className="text--intro text--center bold important">Here's how</p>

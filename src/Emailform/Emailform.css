@@ -57,9 +57,4 @@
   .submitButton {
     margin: 0px;
   }
-  .submitWrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
 }

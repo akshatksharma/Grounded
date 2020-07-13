@@ -21,13 +21,13 @@ const Storypage = (props) => {
         <div className="box__content">
           <div className="box__text flow">
             <p className="text">
-              Record a message describing your object and telling its story.​
-              How you tell the story is up to you. You can record alone or get a
-              friend to join you and make it a conversation.
+              Record a message describing your object and telling its story. How
+              you tell the story is up to you; you can record alone, or have a
+              friend join you and make it a conversation.
             </p>
             <p className="text">
-              Talk or type as long or as little as you want, in whatever style
-              you choose.
+              Talk for as long as you like (up to five minutes) in whatever
+              style you choose.
             </p>
           </div>
         </div>

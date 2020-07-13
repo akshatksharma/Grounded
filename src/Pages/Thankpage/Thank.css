@@ -5,24 +5,86 @@
 .header__title--thank {
   font-size: calc(44px + (64 - 44) * ((100vw - 640px) / (1280 - 640)));
 }
-
 .box--thank {
   min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.box__content--thank {
+  width: 90%;
+}
+
+.box__text {
+  text-align: center;
+}
+
+.box__text .text {
+  margin-bottom: 5px;
+}
+
+.box a.text {
+  color: blue;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.socialmedia {
+  margin: 20px 0px;
+  /* margin-top: 40px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sharebtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.sharebtn > *:hover,
+.sharebtn > *:focus {
+  opacity: 0.9 !important;
+}
+
+.sharebtn:active {
+  transform: scale(0.99);
+}
+
+.sharebtn--ig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .box a.button {
-  margin-top: 30px;
+  color: black;
+  margin: 30px 0px;
   width: fit-content;
 }
 
 @media (min-width: 640px) {
   .box__content--thank {
-    width: 50%;
+    width: 65%;
   }
 
   .box a.button {
     margin-top: 50px;
+  }
+  .box a.text {
+    font-size: 16px;
+  }
+
+  .sharebtn {
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }

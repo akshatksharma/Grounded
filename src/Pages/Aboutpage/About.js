@@ -40,19 +40,22 @@ const About = () => {
           <div className="abouttext column flow">
             <p className="text--intro about_content">
               The enduring stories of global events are often found in the
-              objects that are left behind: artifacts in museums, keepsakes
-              passed down through families, houses that withstood war, famine,
-              or plague.
+              objects left behind. Artifacts and keepsakes help us connect to
+              our own histories and those of others.
             </p>
             <p className="text--intro about_content">
-              Living in quarantine has forced many of us to find new meaning in
-              the spaces we inhabit and the objects that surround us.
+              "Grounded: The Pandemic Archive" is our effort to assemble the
+              objects that tell our stories. When the virus arrived, flights
+              were grounded, young people were grounded with their parents, and
+              many of the elderly were grounded by fear. At the same time, we
+              have found ways to ground ourselves through self-care, by
+              embracing or enhancing the physical space around us, or by
+              becoming more "grounded" in our mindset and outlook.
             </p>
             <p className="text--intro about_content">
-              “Grounded: The Pandemic Archive” is our effort to assemble a
-              living archive of the objects that tell our stories. Through this
-              project, we invite you to find and preserve an object that holds a
-              piece of your story, and add your voice to history.
+              Through this collective project, we invite you to find and
+              preserve an object that captures part of this spectrum of
+              experience. What does "Grounded" mean to you?
             </p>
           </div>
         </div>
@@ -63,7 +66,6 @@ const About = () => {
         </h1>
         <div className="example_back">
           <div className="audioPlayer">
-            <div className="header__title header__title--sample">Planner</div>
             <div className="imageCrop">
               <img
                 src="Picture1.png"
@@ -80,10 +82,6 @@ const About = () => {
             </div>
           </div>
           <div className="audioPlayer">
-            <div className="header__title header__title--sample">
-              Mom's Garden
-            </div>
-
             <div className="imageCrop">
               <img
                 src="Picture2.png"
@@ -99,8 +97,6 @@ const About = () => {
             </div>
           </div>
           <div className="audioPlayer">
-            <div className="header__title header__title--sample">Plant</div>
-
             <div className="imageCrop">
               <img
                 src="Picture3.png"
