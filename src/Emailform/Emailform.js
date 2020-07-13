@@ -72,7 +72,7 @@ const Emailform = (props) => {
             </p>
           </div>
         </div>
-        <div className="submitWrapper">
+        <button className="submitWrapper">
           <div className="submitButton">
             <label
               ref={submitRef}
@@ -83,7 +83,7 @@ const Emailform = (props) => {
             </label>
             <button id="submit" onClick={handleSubmit}></button>
           </div>
-        </div>
+        </button>
       </form>
       {submitted ? <Redirect to="/thank" /> : null}
     </div>

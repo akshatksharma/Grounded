@@ -1,6 +1,6 @@
 .recorder {
-  min-width: 275px;
-  width: 55%;
+  max-width: 400px;
+  width: 100%;
   min-height: 275px;
   display: flex;
   flex-direction: column;
@@ -67,4 +67,10 @@
 .time {
   margin-top: 0px;
   font-size: 36px;
+}
+
+.audioPlayback {
+  margin-top: 5px;
+  border: 2px solid rgb(238, 238, 238);
+  border-radius: 30px;
 }

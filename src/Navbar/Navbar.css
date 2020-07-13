@@ -17,7 +17,11 @@
   padding: 10px;
   letter-spacing: 0.5px;
   line-height: 1.2;
+  font-weight: 700;
+  color: black;
+}
 
+.headerbar a:visited {
   color: black;
 }
 

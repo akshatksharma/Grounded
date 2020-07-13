@@ -28,7 +28,7 @@ const About = () => {
                     groundedarchives@gmail.com
                   </a>
                 </div>
-                <div className="contactInfo__number">
+                <div className="contactinfo__number">
                   <div className="box_sub_title">Phone Number:</div>
                   <a classname="text" href="tel:314-312-3524">
                     (314) 312-3524
@@ -69,9 +69,10 @@ const About = () => {
             <div className="imageCrop">
               <img
                 src="Picture1.png"
-                alt="A floral planner"
+                alt="A small planning notebook with a floral design on its cover. It is resting on a wodden table and is being seen from above."
                 className="audioimage"
                 id="plannerpic"
+                title="Planning Notebook"
               ></img>
             </div>
 
@@ -85,9 +86,10 @@ const About = () => {
             <div className="imageCrop">
               <img
                 src="Picture2.png"
-                alt="An 8x8 garden box"
+                alt="A picture of a garden from above on a bright, sunny day. There is a 8 foot by 8 foot garden box with various plantlife including flowers and different vegetables.  "
                 className="audioimage"
                 id="gardenpic"
+                title="Garden box"
               ></img>
             </div>
             <div className="audioControls">
@@ -100,9 +102,10 @@ const About = () => {
             <div className="imageCrop">
               <img
                 src="Picture3.png"
-                alt="A succulent plant"
+                alt="A shot of a small plant in a green pot pot. It has spikes and thorns on its main stem coming from the ground. "
                 className="audioimage"
                 id="cactuspic"
+                title="Cactus plant"
               ></img>
             </div>
             <div className="audioControls">

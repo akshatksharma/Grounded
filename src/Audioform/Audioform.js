@@ -60,37 +60,37 @@ const Audioform = (props) => {
   const pauseText = () => (recording ? "Pause" : "Resume");
 
   const startButton = (
-    <div className="recorder__button" onClick={start}>
+    <button className="recorder__button" onClick={start}>
       <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
       <p className="text bold">Start</p>
-    </div>
+    </button>
   );
 
   const redoButton = (
-    <div className="recorder__button" onClick={start}>
+    <button className="recorder__button" onClick={start}>
       <FontAwesomeIcon icon={faRedo} size="lg" />
 
       <p className="text bold">Redo</p>
-    </div>
+    </button>
   );
 
   const stopButton = (
-    <div className="recorder__button" onClick={stop}>
+    <button className="recorder__button" onClick={stop}>
       <FontAwesomeIcon icon={faStop} color={"#FF5858"} size="lg" />
 
       <p className="text bold">Stop</p>
-    </div>
+    </button>
   );
 
   const pauseButton = (
-    <div className="recorder__button" onClick={pause}>
+    <button className="recorder__button" onClick={pause}>
       {recording ? (
         <FontAwesomeIcon icon={faPause} size="lg" />
       ) : (
         <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
       )}
       <p className="text bold">{pauseText()}</p>
-    </div>
+    </button>
   );
 
   const controlBar = () => {
@@ -119,7 +119,7 @@ const Audioform = (props) => {
     if (audioBlob) {
       const audioURL = URL.createObjectURL(audioBlob);
       return (
-        <div classname="audioPreview">
+        <div classname="audioPreview" style={{width: "100%"}}>
           <h1 style={{ marginLeft: "20px" }}>Preview</h1>
           <audio className="audioPlayback" controls src={audioURL}></audio>
         </div>

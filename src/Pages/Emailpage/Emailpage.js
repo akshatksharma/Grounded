@@ -7,7 +7,7 @@ const Emailpage = (props) => {
     <div className="page page--email">
       <div className="box flow">
         <div className="box__header">
-          <div className="header__title">3. Confirmation</div>
+          <h3 className="header__title">3. Confirmation</h3>
           <div className="header__background"></div>
         </div>
         <div className="box__content">

@@ -32,9 +32,9 @@ const Textform = (props) => {
           <div>{savedTime ? "Last saved:" : null}</div>
           <div>{savedTime}</div>
         </div>
-        <div className=" button--save text--center" onClick={submit}>
+        <button className=" button--save text--center" onClick={submit}>
           Save
-        </div>
+        </button>
       </div>
     </div>
   );

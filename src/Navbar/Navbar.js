@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   let content = (
-    <div id="header" className="headerbar bold">
+    <header id="header" className="headerbar bold">
       <NavLink
         to="/"
         className="headerbar__title bold"
@@ -15,7 +15,7 @@ const Navbar = () => {
       <NavLink to="/about" activeClassName="selected">
         About
       </NavLink>
-    </div>
+    </header>
   );
 
   return content;

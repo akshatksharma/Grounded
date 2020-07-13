@@ -7,7 +7,7 @@ const Objectpage = (props) => {
       <h2 className="subtitle bold text--center">How to create a capsule:</h2>
       <div className="box flow">
         <div className="box__header">
-          <div className="header__title">1. Choose an object</div>
+          <h3 className="header__title">1. Choose an object</h3>
           <div className="header__background"></div>
         </div>
         <div className="box__content">

@@ -95,6 +95,13 @@
   margin-top: 2%;
 }
 
+.contactinfo__email a:hover,
+.contactinfo__email a:focus,
+.contactinfo__number a:hover,
+.contactinfo__number a:focus {
+  text-decoration: underline;
+}
+
 .example_back {
   display: flex;
   flex-wrap: wrap;

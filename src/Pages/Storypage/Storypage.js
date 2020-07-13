@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare, faCheckSquare } from "@fortawesome/free-regular-svg-icons";
 import Audioform from "../../Audioform/Audioform.js";
 import Textform from "../../Textform/Textform.js";
-import "./Storypage.css"
+import "./Storypage.css";
 
 const Storypage = (props) => {
   const [usingAudio, setUsingAudio] = useState(true);
@@ -11,12 +11,15 @@ const Storypage = (props) => {
   const toggleAudio = () => {
     setUsingAudio(!usingAudio);
   };
+  const handleKey = (event) => {
+    if (event.key === "Enter") setUsingAudio(!usingAudio);
+  };
 
   let content = (
     <div className="page page--story">
       <div className="box flow">
         <div className="box__header">
-          <div className="header__title ">2. Tell your story</div>
+          <h3 className="header__title ">2. Tell your story</h3>
           <div className="header__background"></div>
         </div>
         <div className="box__content">
@@ -42,6 +45,7 @@ const Storypage = (props) => {
             className="checkbox__label"
             htmlFor="text"
             onChange={toggleAudio}
+            onKeyPress={handleKey}
           >
             <input id="text" type="checkbox"></input>
             <div className="checkbox__box--text">
