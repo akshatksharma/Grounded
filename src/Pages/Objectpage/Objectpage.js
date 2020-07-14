@@ -3,7 +3,7 @@ import Fileform from "../../Fileform/Fileform.js";
 
 const Objectpage = (props) => {
   let content = (
-    <div className="page page--object">
+    <div className="page page--object" role="region" aria-label="Upload object">
       <h2 className="subtitle bold text--center">How to create a capsule:</h2>
       <div className="box flow">
         <div className="box__header">

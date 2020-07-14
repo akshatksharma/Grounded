@@ -5,12 +5,15 @@ import { faInstagramSquare } from "@fortawesome/free-brands-svg-icons";
 
 const InstagramShareButton = (props) => {
   let content = (
-    <div className="sharebtn sharebtn--ig" onClick={() => props.show()}>
-      <FontAwesomeIcon
-        icon={faInstagramSquare}
-        size={"3x"}
-      />
-    </div>
+    <button
+      className="sharebtn sharebtn--ig"
+      onClick={() => props.show()}
+      aria-label="Share by Instagram"
+      aria-haspopup
+      tabIndex="0"
+    >
+      <FontAwesomeIcon icon={faInstagramSquare} size={"3x"} />
+    </button>
   );
 
   return content;

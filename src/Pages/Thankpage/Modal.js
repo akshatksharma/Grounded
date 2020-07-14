@@ -3,9 +3,12 @@ import "./Modal.css";
 
 const Modal = ({ hide, title, body }) => {
   const node = useRef(null);
+  const closeButton = useRef(null);
 
   useEffect(() => {
+    node.current.focus();
     document.addEventListener("mousedown", handleClick);
+
     return () => {
       document.removeEventListener("mousedown", handleClick);
     };
@@ -18,9 +21,22 @@ const Modal = ({ hide, title, body }) => {
 
   let content = (
     <div className="modal">
-      <div className="modal__content flow" ref={node}>
+      <div
+        className="modal__content flow"
+        role="alertdialog"
+        aria-modal
+        tabIndex="0"
+        ref={node}
+      >
         <div className="modal__header">
-          <div className="close" onClick={() => hide()}>
+          <button
+            className="close"
+            ref={closeButton}
+            onClick={() => hide()}
+            role="button"
+            aria-label="Close dialog"
+            tabIndex="0"
+          >
             <svg
               className="close__button close__button--login"
               viewBox=" 0 0 20 20"
@@ -31,7 +47,7 @@ const Modal = ({ hide, title, body }) => {
                 points="11.649 9.882 18.262 3.267 16.495 1.5 9.881 8.114 3.267 1.5 1.5 3.267 8.114 9.883 1.5 16.497 3.267 18.264 9.881 11.65 16.495 18.264 18.262 16.497"
               ></polygon>
             </svg>
-          </div>
+          </button>
           <h2 className="header__title">{title}</h2>
         </div>
         <div className="modal__body">{body}</div>

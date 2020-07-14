@@ -69,16 +69,18 @@ const App = () => {
               </Route>
               <Route exact path="/">
                 <Navbar />
-                <Intropage />
-                <Fade>
-                  <Objectpage updateData={updateData} />
-                </Fade>
-                <Fade>
-                  <Storypage updateData={updateData} />
-                </Fade>
-                <Fade>
-                  <Emailpage updateData={updateData} submit={submit} />
-                </Fade>
+                <main>
+                  <Intropage />
+                  <Fade>
+                    <Objectpage updateData={updateData} />
+                  </Fade>
+                  <Fade>
+                    <Storypage updateData={updateData} />
+                  </Fade>
+                  <Fade>
+                    <Emailpage updateData={updateData} submit={submit} />
+                  </Fade>
+                </main>
                 <Footer />
               </Route>
             </Switch>

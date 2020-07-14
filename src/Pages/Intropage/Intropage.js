@@ -3,7 +3,7 @@ import "./Intropage.css";
 
 const Intropage = () => {
   let content = (
-    <div className="page page--intro flow">
+    <div className="page page--intro flow" role="region" aria-label="Introduction">
       <h1 className="title text--center important">Grounded</h1>
       <div className="intro flow">
         <p className="text--intro text--center">

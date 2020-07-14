@@ -38,25 +38,39 @@ input[type="text"] {
   height: 40px;
   border: none;
   border-bottom: 2px solid #ffc259;
-  background: #fff7e9;
+  /* background: #fff7e9; */
 
   padding-left: 5px;
+}
+
+input[type="email"]:hover,
+input[type="email"]:focus,
+input[type="text"]:hover,
+input[type="text"]:focus {
+  outline: none;
+  background: #fff7e9;
+  transition: 0.3s;
 }
 
 input[type="email"].error,
 input[type="text"].error {
   background: #fff5f5 !important;
-  border: 1px solid red;
+  border-bottom: 2px solid red;
 }
 input[type="email"]:focus.error,
 input[type="text"]:focus.error {
+  transition: 0.3s;
   background: #fff5f5 !important;
-  outline: 1px solid red;
+  outline-bottom: 1px solid red;
 }
 
 .button.disabled {
   cursor: not-allowed;
-  border: 1px solid red;
+  border: 2px solid red;
+  background: #fff5f5;
+}
+
+.button.disabled:focus {
   background: #fff5f5;
 }
 
@@ -106,6 +120,7 @@ input[type="text"]:focus.error {
 
 .button:hover,
 .button:focus {
+  outline: none;
   background: #fff7e9;
 }
 

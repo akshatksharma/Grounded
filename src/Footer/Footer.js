@@ -19,7 +19,7 @@ const Footer = () => {
     <footer className="footer ">
       <div className="footer__content flow">
         <div className="followUs">
-          <h1 className="footer__title">Follow Us</h1>
+          <h3 className="footer__title">Follow Us</h3>
           <div className="footer__icons">
             <a href="//twitter.com">
               <FontAwesomeIcon
@@ -52,7 +52,7 @@ const Footer = () => {
         </div>
         <div className="contactUs">
           <div className="contactUs__content flow">
-            <h1 className="footer__title">Contact Us</h1>
+            <h3 className="footer__title">Contact Us</h3>
             <p className="text">
               <a
                 href="mailto:groundedarchives@gmail.com?subject=Question"

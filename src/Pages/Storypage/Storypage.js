@@ -16,7 +16,7 @@ const Storypage = (props) => {
   };
 
   let content = (
-    <div className="page page--story">
+    <div className="page page--story" role="region" aria-label="Record story">
       <div className="box flow">
         <div className="box__header">
           <h3 className="header__title ">2. Tell your story</h3>

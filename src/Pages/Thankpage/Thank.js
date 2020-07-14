@@ -35,11 +35,18 @@ const Thank = () => {
           body={
             <div className="flow">
               <p className="text">
-                Please click here to download a graphic to share on your
-                Instagram story.{" "}
+                Please click{" "}
+                <a
+                  id="graphiclink"
+                  aria-labelledby="graphiclink"
+                  href="//google.com"
+                >
+                  here
+                </a>{" "}
+                to download a graphic to share on your Instagram story.{" "}
               </p>
               <p className="text">
-                Don’t forget to tag us using @grounndedarchive and
+                Don’t forget to tag us using @groundedarchive and
                 #groundedarchive{" "}
               </p>
             </div>
@@ -77,6 +84,7 @@ const Thank = () => {
         </div>
         <div className="socialmedia">
           <TwitterShareButton
+            aria-label="Share by twitter"
             className="sharebtn sharebtn--twitter"
             url="groundedarchive.com"
             title={shareText}
@@ -85,6 +93,7 @@ const Thank = () => {
             <FontAwesomeIcon icon={faTwitterSquare} size={"3x"} />
           </TwitterShareButton>
           <FacebookShareButton
+            aria-label="Share by facebook"
             className="sharebtn sharebtn--facebook"
             url="groundedarchive.com"
             quote={shareText}
@@ -94,6 +103,8 @@ const Thank = () => {
           </FacebookShareButton>
           <InstagramShareButton show={toggleModal}></InstagramShareButton>
           <a
+            role="button"
+            aria-label="Share by email"
             className="sharebtn sharebtn--email"
             target="_blank"
             rel="noopener"

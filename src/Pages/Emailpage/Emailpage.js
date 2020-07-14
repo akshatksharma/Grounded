@@ -4,7 +4,7 @@ import Emailform from "../../Emailform/Emailform.js";
 
 const Emailpage = (props) => {
   let content = (
-    <div className="page page--email">
+    <div className="page page--email" role="region" aria-label="Confirm submission">
       <div className="box flow">
         <div className="box__header">
           <h3 className="header__title">3. Confirmation</h3>

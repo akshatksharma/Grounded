@@ -21,6 +21,15 @@
   color: black;
 }
 
+.headerbar a:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+.headerbar a:focus {
+  outline: 1px solid black;
+}
+
 .headerbar a:visited {
   color: black;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMicrophone,
@@ -50,9 +50,9 @@ const Audioform = (props) => {
   }, [props, audioBlob]);
 
   const recordText = () => {
-    let text = recording ? <p>Recording...</p> : null;
-    if (!recording && started) text = <p>Paused</p>;
-    if (finished) text = <p>Recording Saved</p>;
+    let text = recording ? "Recording..." : null;
+    if (!recording && started) text = "Paused";
+    if (finished) text = "Recording Saved";
 
     return text;
   };
@@ -60,7 +60,11 @@ const Audioform = (props) => {
   const pauseText = () => (recording ? "Pause" : "Resume");
 
   const startButton = (
-    <button className="recorder__button" onClick={start}>
+    <button
+      className="recorder__button"
+      onClick={start}
+      style={{ marginTop: "10px" }}
+    >
       <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
       <p className="text bold">Start</p>
     </button>
@@ -96,7 +100,11 @@ const Audioform = (props) => {
   const controlBar = () => {
     if (recording && started) {
       return (
-        <div className="recorder__control">
+        <div
+          className="recorder__control"
+          role="toolbar"
+          aria-label="Recorder controls"
+        >
           {pauseButton}
           {stopButton}
         </div>
@@ -104,7 +112,11 @@ const Audioform = (props) => {
     }
     if (!recording && started) {
       return (
-        <div className="recorder__control">
+        <div
+          className="recorder__control"
+          role="toolbar"
+          aria-label="Recorder controls"
+        >
           {pauseButton}
           {stopButton}
         </div>
@@ -119,41 +131,57 @@ const Audioform = (props) => {
     if (audioBlob) {
       const audioURL = URL.createObjectURL(audioBlob);
       return (
-        <div classname="audioPreview" style={{width: "100%"}}>
-          <h1 style={{ marginLeft: "20px" }}>Preview</h1>
-          <audio className="audioPlayback" controls src={audioURL}></audio>
+        <div
+          classname="audio__preview"
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h4>Preview</h4>
+          <audio
+            className="audioPlayback"
+            controls
+            src={audioURL}
+            aria-label="audio playback"
+          ></audio>
         </div>
       );
     } else return;
   };
 
   let content = (
-    <div className="recorder flow">
-      {recording || finished || started ? (
-        <Timer
-          isRecording={recording}
-          isStarted={started}
-          isFinished={finished}
-          timeout={stop}
-        />
-      ) : null}
-      <div
-        className={
-          recording
-            ? "recorder__mic recorder__mic recorder__mic--recording"
-            : "recorder__mic"
-        }
-      >
-        <FontAwesomeIcon
-          icon={faMicrophone}
-          size="3x"
-          className={recording ? "recording" : "idle"}
-        />
+    <Fragment>
+      <div className="recorder flow" aria-label="audio recorder">
+        {recording || finished || started ? (
+          <Timer
+            isRecording={recording}
+            isStarted={started}
+            isFinished={finished}
+            timeout={stop}
+          />
+        ) : null}
+        <div
+          className={
+            recording
+              ? "recorder__mic recorder__mic recorder__mic--recording"
+              : "recorder__mic"
+          }
+        >
+          <FontAwesomeIcon
+            icon={faMicrophone}
+            size="3x"
+            className={recording ? "recording" : "idle"}
+          />
+        </div>
+        <p aria-live="polite">{recordText()}</p>
+        {controlBar()}
       </div>
-      {recordText()}
-      {controlBar()}
       {playback()}
-    </div>
+    </Fragment>
   );
 
   return content;

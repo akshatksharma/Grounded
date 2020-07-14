@@ -42,14 +42,10 @@
   --flow-space: 1rem;
 }
 
-#submit {
-  opacity: 0;
-  position: absolute;
-}
-
 .submitButton {
   display: inline-flex;
   text-align: center;
+  outline: none;
 }
 
 @media (min-width: 768px) {

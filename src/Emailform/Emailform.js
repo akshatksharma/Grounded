@@ -21,6 +21,8 @@ const Emailform = (props) => {
   function submit() {
     if (!emailValid) {
       submitRef.current.classList.add("disabled");
+      submitRef.current.setAttribute("aria-invalid", "true");
+      submitRef.current.setAttribute("aria-disabled", "true");
       return;
     }
 
@@ -35,13 +37,11 @@ const Emailform = (props) => {
     setSubmitted(true);
   }
 
-  const releaseCheck = () => {
-    setIsRelease(!isRelease);
-  };
-
   useEffect(() => {
     if (emailValid) {
       submitRef.current.classList.remove("disabled");
+      submitRef.current.setAttribute("aria-invalid", "false");
+      submitRef.current.setAttribute("aria-disabled", "false");
     }
     return () => {};
   }, [emailValid]);
@@ -57,8 +57,10 @@ const Emailform = (props) => {
               id="email"
               name="email"
               onChange={handleChange}
-              placeholder="Email"
+              placeholder="Enter your email"
               required
+              aria-label="Enter email"
+              aria-disabled={emailValid || !values.email ? "false" : "true"}
             />
           </div>
         </div>
@@ -72,18 +74,18 @@ const Emailform = (props) => {
             </p>
           </div>
         </div>
-        <button className="submitWrapper">
-          <div className="submitButton">
-            <label
-              ref={submitRef}
-              className={"button button--submit"}
-              htmlFor="submit"
-            >
-              Submit
-            </label>
-            <button id="submit" onClick={handleSubmit}></button>
-          </div>
-        </button>
+        <div className="submitWrapper">
+          <label htmlFor="submit"></label>
+          <button
+            ref={submitRef}
+            id="submit"
+            className={"button button--submit"}
+            onClick={handleSubmit}
+            aria-live="polite"
+          >
+            Submit
+          </button>
+        </div>
       </form>
       {submitted ? <Redirect to="/thank" /> : null}
     </div>
