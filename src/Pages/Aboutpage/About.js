@@ -30,7 +30,11 @@ const About = () => {
                 </div>
                 <div className="contactinfo__number">
                   <div className="box_sub_title">Phone Number:</div>
-                  <a classname="text" href="tel:314-312-3524">
+                  <a
+                    classname="text"
+                    href="tel:314-312-3524"
+                    rel="noopener noreferrer"
+                  >
                     (314) 312-3524
                   </a>
                 </div>
