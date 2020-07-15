@@ -67,6 +67,9 @@ a:-webkit-any-link {
   text-decoration: none;
   font-weight: 500;
   color: #006fc6;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 a:-webkit-any-link:visited {
   color: #556dc6;

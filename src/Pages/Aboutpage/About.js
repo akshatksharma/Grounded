@@ -1,6 +1,5 @@
 import React from "react";
 import "./About.css";
-import Fade from "react-reveal/Fade";
 
 import sound1 from "../../Samples/Planner.m4a";
 import sound2 from "../../Samples/Mom's_Garden.m4a";
@@ -14,7 +13,7 @@ const About = () => {
           About Our Project
         </h1>
         <div className="about__content">
-          <div className="contactinfo column">
+          <div className="contactinfo">
             <div className="box_outside">
               <div className="box_content flow">
                 <div className="box_title">Contact Info</div>
@@ -37,7 +36,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="abouttext column flow">
+          <div className="abouttext flow">
             <p className="text--intro about_content">
               The enduring stories of global events are often found in the
               objects left behind. Artifacts and keepsakes help us connect to
@@ -86,7 +85,7 @@ const About = () => {
             <div className="imageCrop">
               <img
                 src="Picture2.png"
-                alt="A picture of a garden from above on a bright, sunny day. There is a 8 foot by 8 foot garden box with various plantlife including flowers and different vegetables.  "
+                alt="A garden from above on a bright, sunny day. There is a 8 foot by 8 foot garden box with various plantlife including flowers and different vegetables.  "
                 className="audioimage"
                 id="gardenpic"
                 title="Garden box"

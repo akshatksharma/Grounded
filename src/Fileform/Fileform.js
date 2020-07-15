@@ -104,10 +104,7 @@ const Fileform = (props) => {
         <div className="thumbnail" key={file.name} aria-label="Image Preview">
           <div className="thumb">
             <div className="thumbInner">
-              <img
-                src={file.preview}
-                alt={"A thumbnail of an uploaded image"}
-              />
+              <img src={file.preview} alt={"The thumbnail"} />
             </div>
           </div>
           <div className="thumbName">

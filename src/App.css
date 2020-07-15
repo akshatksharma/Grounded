@@ -2,7 +2,6 @@
 html,
 body {
   background-color: #fff7e9;
-  scroll-snap-type: y mandatory;
 }
 
 div.transition-group {
@@ -70,7 +69,9 @@ input[type="text"]:focus.error {
   background: #fff5f5;
 }
 
-.button.disabled:focus {
+.button.disabled:focus,
+.button.disabled:hover,
+.button.disabled:active {
   background: #fff5f5;
 }
 

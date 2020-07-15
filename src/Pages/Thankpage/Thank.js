@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Modal from "./Modal.js";
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  TwitterShareButton,
-} from "react-share";
+import { FacebookShareButton, TwitterShareButton } from "react-share";
 import InstagramShareButton from "./InstagramShareButton.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -31,6 +27,7 @@ const Thank = () => {
       {visible ? (
         <Modal
           hide={toggleModal}
+          bkg={true}
           title="Share to Instagram"
           body={
             <div className="flow">
@@ -70,7 +67,7 @@ const Thank = () => {
             <a
               className="text"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               href="https://forms.gle/WVSSmgzmCs6nhWaz9"
             >
               https://forms.gle/WVSSmgzmCs6nhWaz9
@@ -107,7 +104,7 @@ const Thank = () => {
             aria-label="Share by email"
             className="sharebtn sharebtn--email"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             href="mailto:?subject=Grounded%3A%20The%20Pandemic%20Archive&body=I%20contributed%20my%20voice%20to%20%22Grounded%3A%20The%20Pandemic%20Archive%22%20because%20my%20story%20matters%20--%20and%20yours%20does%20too.%0D%0A%0D%0AThe%20crises%20of%20Covid-19%2C%20economic%20hardship%2C%20and%20the%20fight%20for%20racial%20justice%20have%20forced%20us%20to%20find%20new%20meaning%20in%20the%20spaces%20we%20inhabit%20and%20the%20objects%20that%20surround%20us.%20Add%20your%20voice%20to%20the%20historical%20record%20by%20archiving%20an%20object%20that%20tells%20your%20story.%0D%0A%0D%0Awww.groundedarchive.com"
           >
             <FontAwesomeIcon

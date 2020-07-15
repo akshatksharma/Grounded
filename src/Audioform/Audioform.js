@@ -7,6 +7,7 @@ import {
   faPlay,
   faStop,
 } from "@fortawesome/free-solid-svg-icons";
+
 import Timer from "./Timer/Timer.js";
 import recordAudio from "./audiorecorder.js";
 import "./Audioform.css";
@@ -19,15 +20,22 @@ const Audioform = (props) => {
   const [started, setStarted] = useState(false);
   const [finished, setFinished] = useState(false);
 
+  const isiOS = /iPad|iPhone|iPod/.test(navigator.platform || "");
+
+
   const start = async () => {
+    try {
+      let recorder = await recordAudio();
+      recorder.start();
+      setRecorder(recorder);
+    } catch {
+      return;
+    }
+
     setRecording(true);
     setStarted(true);
     setFinished(false);
     setAudioBlob(null);
-
-    let recorder = await recordAudio();
-    recorder.start();
-    setRecorder(recorder);
   };
 
   const pause = () => {
@@ -59,16 +67,33 @@ const Audioform = (props) => {
 
   const pauseText = () => (recording ? "Pause" : "Resume");
 
-  const startButton = (
-    <button
-      className="recorder__button"
-      onClick={start}
-      style={{ marginTop: "10px" }}
-    >
-      <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
-      <p className="text bold">Start</p>
-    </button>
-  );
+  const startButton = () => {
+    if (isiOS) {
+      return (
+        <Fragment>
+          <div
+            className="recorder__button"
+            onClick={props.toggleModal}
+            style={{ marginTop: "10px" }}
+          >
+            <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
+            <p className="text bold">Start</p>
+          </div>
+        </Fragment>
+      );
+    } else {
+      return (
+        <button
+          className="recorder__button"
+          onClick={start}
+          style={{ marginTop: "10px" }}
+        >
+          <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
+          <p className="text bold">Start</p>
+        </button>
+      );
+    }
+  };
 
   const redoButton = (
     <button className="recorder__button" onClick={start}>
@@ -124,7 +149,7 @@ const Audioform = (props) => {
     }
     if (finished) {
       return redoButton;
-    } else return startButton;
+    } else return startButton();
   };
 
   const playback = () => {

@@ -1,28 +1,33 @@
 import React, { useRef, useEffect } from "react";
+import { isMobile } from "react-device-detect";
 import "./Modal.css";
 
-const Modal = ({ hide, title, body }) => {
+const Modal = ({ hide, bkg, title, body }) => {
   const node = useRef(null);
   const closeButton = useRef(null);
-
-  useEffect(() => {
-    node.current.focus();
-    document.addEventListener("mousedown", handleClick);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-    };
-  }, []);
 
   const handleClick = (e) => {
     if (node.current.contains(e.target)) return;
     else hide();
   };
 
+  useEffect(() => {
+    // node.current.focus();
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [handleClick]);
+
   let content = (
-    <div className="modal">
+    <div className={bkg ? "modal" : "modal modal--nobkg"}>
       <div
-        className="modal__content flow"
+        className={
+          isMobile
+            ? "modal__content modal__content--mobile flow"
+            : "modal__content flow"
+        }
         role="alertdialog"
         aria-modal
         tabIndex="0"
@@ -33,7 +38,6 @@ const Modal = ({ hide, title, body }) => {
             className="close"
             ref={closeButton}
             onClick={() => hide()}
-            role="button"
             aria-label="Close dialog"
             tabIndex="0"
           >

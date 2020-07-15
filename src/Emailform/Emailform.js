@@ -13,7 +13,6 @@ const Emailform = (props) => {
     values,
     emailValid,
     clearValues,
-    handleCheck,
     handleChange,
     handleSubmit,
   } = useForm(submit);

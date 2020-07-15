@@ -5,15 +5,20 @@
   top: 0;
   z-index: 10;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding-top: 100px;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal__content:not(:focus-within) {
+.modal--nobkg {
+  padding-top: 0px;
+  background-color: transparent;
+}
+
+/* .modal__content:not(:focus-within) {
   background-color: #fdfdff;
   transition: background-color 0.01s;
-}
+} */
 
 .modal__content {
   position: relative;
@@ -27,6 +32,10 @@
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation: animatetop 0.75s forwards;
+}
+
+.modal__content--mobile {
+  animation: animatetopmobile 0.75s forwards;
 }
 
 .header__title {
@@ -46,6 +55,16 @@
   }
 }
 
+@keyframes animatetopmobile {
+  from {
+    top: -50%;
+    opacity: 0;
+  }
+  to {
+    top: 15%;
+    opacity: 1;
+  }
+}
 .close {
   display: flex;
   flex-direction: row-reverse;
