@@ -4,18 +4,20 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   let content = (
-    <div id="header" className="headerbar bold">
-      <NavLink
-        to="/"
-        className="headerbar__title bold"
-        activeClassName="selected headerbar__title bold"
-      >
-        GROUNDED
-      </NavLink>
-      <NavLink to="/about" activeClassName="selected">
-        About
-      </NavLink>
-    </div>
+    <header>
+      <nav id="header" className="headerbar bold">
+        <NavLink
+          to="/"
+          className="headerbar__title bold"
+          activeClassName="selected headerbar__title bold"
+        >
+          GROUNDED
+        </NavLink>
+        <NavLink to="/about" activeClassName="selected">
+          About
+        </NavLink>
+      </nav>
+    </header>
   );
 
   return content;

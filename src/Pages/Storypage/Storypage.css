@@ -1,0 +1,5 @@
+.checkbox__box--text :hover,
+input[type="checkbox"]:focus + .checkbox__box--text {
+  transform: scale(1.05);
+  transition: 0.3s;
+}

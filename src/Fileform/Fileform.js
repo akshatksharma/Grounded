@@ -13,6 +13,7 @@ const Fileform = (props) => {
   };
 
   const handleFile = (acceptedFiles) => {
+    console.log(acceptedFiles);
     setFiles(
       acceptedFiles.map((file) =>
         Object.assign(file, {
@@ -92,17 +93,18 @@ const Fileform = (props) => {
         })}
       >
         <input {...getInputProps()} />
+
         {isDragActive ? (
           <p>Drop image here ...</p>
         ) : (
-          <p>Choose an image or drag it here</p>
+          <p>Click to choose an image, or drag it here</p>
         )}
       </div>
       {files.map((file) => (
-        <div className="thumbnail" key={file.name}>
+        <div className="thumbnail" key={file.name} aria-label="Image Preview">
           <div className="thumb">
             <div className="thumbInner">
-              <img src={file.preview} alt={file.name} />
+              <img src={file.preview} alt={"The thumbnail"} />
             </div>
           </div>
           <div className="thumbName">

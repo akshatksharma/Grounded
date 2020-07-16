@@ -2,7 +2,6 @@
 html,
 body {
   background-color: #fff7e9;
-  scroll-snap-type: y mandatory;
 }
 
 div.transition-group {
@@ -38,25 +37,41 @@ input[type="text"] {
   height: 40px;
   border: none;
   border-bottom: 2px solid #ffc259;
-  background: #fff7e9;
+  /* background: #fff7e9; */
 
   padding-left: 5px;
+}
+
+input[type="email"]:hover,
+input[type="email"]:focus,
+input[type="text"]:hover,
+input[type="text"]:focus {
+  outline: none;
+  background: #fff7e9;
+  transition: 0.3s;
 }
 
 input[type="email"].error,
 input[type="text"].error {
   background: #fff5f5 !important;
-  border: 1px solid red;
+  border-bottom: 2px solid red;
 }
 input[type="email"]:focus.error,
 input[type="text"]:focus.error {
+  transition: 0.3s;
   background: #fff5f5 !important;
-  outline: 1px solid red;
+  outline-bottom: 1px solid red;
 }
 
 .button.disabled {
   cursor: not-allowed;
-  border: 1px solid red;
+  border: 2px solid red;
+  background: #fff5f5;
+}
+
+.button.disabled:focus,
+.button.disabled:hover,
+.button.disabled:active {
   background: #fff5f5;
 }
 
@@ -98,10 +113,18 @@ input[type="text"]:focus.error {
 .button {
   /* color: #6f6f6e; */
   padding: 10px 50px;
+  background: #fdfdfd;
   border: 2px solid #ffc259;
-  background: #fff7e9;
   cursor: pointer;
+  transition: 0.3s;
 }
+
+.button:hover,
+.button:focus {
+  outline: none;
+  background: #fff7e9;
+}
+
 .title {
   /* font-size: 48px; */
   font-size: calc(48px + (72 - 48) * ((100vw - 640px) / (1280 - 640)));
@@ -137,7 +160,6 @@ input[type="text"]:focus.error {
   /* scroll-snap-stop: always; */
   scroll-snap-align: center;
 }
-
 
 .box {
   background-color: #fdfdfd;

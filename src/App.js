@@ -18,6 +18,7 @@ const App = () => {
 
   const updateData = (items) => {
     const [type, data] = items;
+    console.log(typeof data);
     formData.set(type, data);
   };
 
@@ -25,21 +26,19 @@ const App = () => {
     console.log("printing formData...");
 
     for (var pair of formData.entries()) {
-        console.log(pair[0] + ", " + pair[1]);
+      console.log(pair[0] + ", " + pair[1]);
     }
 
-    
     // submit formdata here
 
-    fetch("http://localhost:9000/submitForm",
-        {
-            method: 'POST',
-            headers: { 'enctype': 'multipart/form-data' },
-            body: formData
-        })
-        .then((res) => res.json())
-        .then(res => console.log(res))
-        .catch(err => err);
+    fetch("http://localhost:9000/submitForm", {
+      method: "POST",
+      headers: { enctype: "multipart/form-data" },
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => err);
 
     // clear it at the end
 
@@ -66,19 +65,22 @@ const App = () => {
               <Route exact path="/thank">
                 <Navbar />
                 <Thank />
+                <Footer />
               </Route>
               <Route exact path="/">
                 <Navbar />
-                <Intropage />
-                <Fade>
-                  <Objectpage updateData={updateData} />
-                </Fade>
-                <Fade>
-                  <Storypage updateData={updateData} />
-                </Fade>
-                <Fade>
-                  <Emailpage updateData={updateData} submit={submit} />
-                </Fade>
+                <main>
+                  <Intropage />
+                  <Fade>
+                    <Objectpage updateData={updateData} />
+                  </Fade>
+                  <Fade>
+                    <Storypage updateData={updateData} />
+                  </Fade>
+                  <Fade>
+                    <Emailpage updateData={updateData} submit={submit} />
+                  </Fade>
+                </main>
                 <Footer />
               </Route>
             </Switch>

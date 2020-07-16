@@ -4,21 +4,21 @@ import Emailform from "../../Emailform/Emailform.js";
 
 const Emailpage = (props) => {
   let content = (
-    <div className="page page--email">
+    <div className="page page--email" role="region" aria-label="Confirm submission">
       <div className="box flow">
         <div className="box__header">
-          <div className="header__title">3. Confirmation</div>
+          <h3 className="header__title">3. Confirmation</h3>
           <div className="header__background"></div>
         </div>
         <div className="box__content">
           <div className="box__text flow">
             <p className="text">
-              Thank you for contributing to Grounded: The Pandemic Archive!
+              Thank you for contributing to Grounded: The Pandemic Archive!{" "}
             </p>
             <p className="text">
-              The materials gathered in the archive will be displayed online in
-              an interactive archive. Please leave your contact information
-              below to be notified when the gallery is live:
+              The materials gathered here will soon be made public in an online,
+              interactive archive. We will notify you when the gallery goes
+              live:
             </p>
           </div>
         </div>

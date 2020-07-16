@@ -8,7 +8,8 @@ const Textform = (props) => {
 
   const submit = () => {
     const today = new Date();
-    const hours = today.getHours() - 12;
+    const hours =
+      today.getHours() > 12 ? today.getHours() - 12 : today.getHours();
     const minutes =
       today.getMinutes() < 10 ? `0${today.getMinutes()}` : today.getMinutes();
     const meridiem = today.getHours() > 12 ? " PM" : " AM";
@@ -32,9 +33,9 @@ const Textform = (props) => {
           <div>{savedTime ? "Last saved:" : null}</div>
           <div>{savedTime}</div>
         </div>
-        <div className=" button--save text--center" onClick={submit}>
+        <button className=" button--save text--center" onClick={submit}>
           Save
-        </div>
+        </button>
       </div>
     </div>
   );

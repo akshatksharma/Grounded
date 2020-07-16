@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import { isIOS } from "react-device-detect";
+import AudioRecorder from "audio-recorder-polyfill";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMicrophone,
@@ -7,6 +10,7 @@ import {
   faPlay,
   faStop,
 } from "@fortawesome/free-solid-svg-icons";
+
 import Timer from "./Timer/Timer.js";
 import recordAudio from "./audiorecorder.js";
 import "./Audioform.css";
@@ -20,21 +24,29 @@ const Audioform = (props) => {
   const [finished, setFinished] = useState(false);
 
   const start = async () => {
+    try {
+      let recorder = await recordAudio();
+      recorder.start();
+      setRecorder(recorder);
+    } catch {
+      return;
+    }
+
     setRecording(true);
     setStarted(true);
     setFinished(false);
     setAudioBlob(null);
-
-    let recorder = await recordAudio();
-    recorder.start();
-    setRecorder(recorder);
   };
 
   const pause = () => {
-    setRecording(!recording);
-
-    if (recording) recorder.pause();
-    else recorder.resume();
+    console.log("pausing");
+    if (recording) {
+      recorder.pause();
+      setRecording(false);
+    } else {
+      recorder.resume();
+      setRecording(true);
+    }
   };
 
   const stop = async () => {
@@ -42,7 +54,7 @@ const Audioform = (props) => {
     setStarted(false);
     setFinished(true);
     const audioObj = await recorder.stop();
-    setAudioBlob(audioObj.audioBlob);
+    setAudioBlob(audioObj);
   };
 
   useEffect(() => {
@@ -59,44 +71,69 @@ const Audioform = (props) => {
 
   const pauseText = () => (recording ? "Pause" : "Resume");
 
-  const startButton = (
-    <div className="recorder__button" onClick={start}>
-      <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
-      <p className="text bold">Start</p>
-    </div>
-  );
+  const startButton = () => {
+    if (isIOS && AudioRecorder.notSupported) {
+      return (
+        <Fragment>
+          <div
+            className="recorder__button"
+            // onClick={props.toggleModal}
+            style={{ marginTop: "10px" }}
+          >
+            <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
+            <p className="text bold">Start</p>
+          </div>
+        </Fragment>
+      );
+    } else {
+      return (
+        <button
+          className="recorder__button"
+          onClick={start}
+          style={{ marginTop: "10px" }}
+        >
+          <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
+          <p className="text bold">Start</p>
+        </button>
+      );
+    }
+  };
 
   const redoButton = (
-    <div className="recorder__button" onClick={start}>
+    <button className="recorder__button" onClick={start}>
       <FontAwesomeIcon icon={faRedo} size="lg" />
 
       <p className="text bold">Redo</p>
-    </div>
+    </button>
   );
 
   const stopButton = (
-    <div className="recorder__button" onClick={stop}>
+    <button className="recorder__button" onClick={stop}>
       <FontAwesomeIcon icon={faStop} color={"#FF5858"} size="lg" />
 
       <p className="text bold">Stop</p>
-    </div>
+    </button>
   );
 
   const pauseButton = (
-    <div className="recorder__button" onClick={pause}>
+    <button className="recorder__button" onClick={pause}>
       {recording ? (
         <FontAwesomeIcon icon={faPause} size="lg" />
       ) : (
         <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
       )}
       <p className="text bold">{pauseText()}</p>
-    </div>
+    </button>
   );
 
   const controlBar = () => {
     if (recording && started) {
       return (
-        <div className="recorder__control">
+        <div
+          className="recorder__control"
+          role="toolbar"
+          aria-label="Recorder controls"
+        >
           {pauseButton}
           {stopButton}
         </div>
@@ -104,7 +141,11 @@ const Audioform = (props) => {
     }
     if (!recording && started) {
       return (
-        <div className="recorder__control">
+        <div
+          className="recorder__control"
+          role="toolbar"
+          aria-label="Recorder controls"
+        >
           {pauseButton}
           {stopButton}
         </div>
@@ -112,43 +153,65 @@ const Audioform = (props) => {
     }
     if (finished) {
       return redoButton;
-    } else return startButton;
+    } else return startButton();
   };
 
   const playback = () => {
     if (audioBlob) {
-      const audioURL = URL.createObjectURL(audioBlob);
-      return <audio className="audioPlayback" controls src={audioURL}></audio>;
+      console.log("in playbacc");
+      const audioURL = audioBlob.audioURL;
+      return (
+        <div
+          classname="audio__preview"
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h4>Preview</h4>
+          <audio
+            className="audioPlayback"
+            controls
+            src={audioURL}
+            aria-label="audio playback"
+          ></audio>
+        </div>
+      );
     } else return;
   };
 
   let content = (
-    <div className="recorder flow">
-      <p>{recordText()}</p>
-      {recording || finished || started ? (
-        <Timer
-          isRecording={recording}
-          isStarted={started}
-          isFinished={finished}
-          timeout={stop}
-        />
-      ) : null}
-      <div
-        className={
-          recording
-            ? "recorder__mic recorder__mic recorder__mic--recording"
-            : "recorder__mic"
-        }
-      >
-        <FontAwesomeIcon
-          icon={faMicrophone}
-          size="3x"
-          className={recording ? "recording" : "idle"}
-        />
+    <Fragment>
+      <div className="recorder flow" aria-label="audio recorder">
+        {recording || finished || started ? (
+          <Timer
+            isRecording={recording}
+            isStarted={started}
+            isFinished={finished}
+            timeout={stop}
+          />
+        ) : null}
+        <div
+          className={
+            recording
+              ? "recorder__mic recorder__mic recorder__mic--recording"
+              : "recorder__mic"
+          }
+        >
+          <FontAwesomeIcon
+            icon={faMicrophone}
+            size="3x"
+            className={recording ? "recording" : "idle"}
+          />
+        </div>
+        <p aria-live="polite">{recordText()}</p>
+        {controlBar()}
       </div>
-      {controlBar()}
       {playback()}
-    </div>
+    </Fragment>
   );
 
   return content;
