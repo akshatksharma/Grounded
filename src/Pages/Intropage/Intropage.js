@@ -1,9 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "../Thankpage/Modal.js";
+import { isIOS } from "react-device-detect";
+import AudioRecorder from "audio-recorder-polyfill";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import "./Intropage.css";
 
 const Intropage = () => {
+  const [visible, setVisible] = useState(true);
+
+  const toggleModal = () => {
+    setVisible(!visible);
+  };
+
+  const deviceSupport = () => {
+    if (isIOS && AudioRecorder.notSupported && visible) {
+      return (
+        <Modal
+          hide={toggleModal}
+          bkg={false}
+          title="Unsupported Browser"
+          body={
+            <div className="flow">
+              <p className="text">
+                Due to current limitations in web technologies, it is not
+                possible to natively record audio on Chrome for iOS.
+              </p>
+              <p className="text">
+                Please visit this site in your the Safari App on your phone for
+                the best experience.
+              </p>
+              <CopyToClipboard text={"groundedarchive.com"}>
+                <p className="text text--special">Click here to copy the site's URL</p>
+              </CopyToClipboard>
+              <p className="text">We apologize for the inconvenience.</p>
+            </div>
+          }
+        />
+      );
+    } else return null;
+  };
   let content = (
-    <div className="page page--intro flow" role="region" aria-label="Introduction">
+    <div
+      className="page page--intro flow"
+      role="region"
+      aria-label="Introduction"
+    >
+      {deviceSupport()}
       <h1 className="title text--center important">Grounded</h1>
       <div className="intro flow">
         <p className="text--intro text--center">

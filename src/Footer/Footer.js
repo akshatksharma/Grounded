@@ -3,8 +3,6 @@ import "./Footer.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
-  faFacebook,
-  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
@@ -21,25 +19,7 @@ const Footer = () => {
         <div className="followUs">
           <h3 className="footer__title">Follow Us</h3>
           <div className="footer__icons">
-            <a href="//twitter.com">
-              <FontAwesomeIcon
-                className="twitter"
-                title="Link to Twitter page"
-                style={{ color: "000" }}
-                icon={faTwitter}
-                size={"2x"}
-              />
-            </a>
-            <a href="//facebook.com">
-              <FontAwesomeIcon
-                className="facebook"
-                title="Link to Facebook page"
-                style={{ color: "000" }}
-                icon={faFacebook}
-                size={"2x"}
-              />
-            </a>
-            <a href="//instagram.com">
+            <a href="https://www.instagram.com/grounded.archive/">
               <FontAwesomeIcon
                 className="instagram"
                 title="Link to Instagram page"

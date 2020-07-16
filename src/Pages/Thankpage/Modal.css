@@ -15,11 +15,6 @@
   background-color: transparent;
 }
 
-/* .modal__content:not(:focus-within) {
-  background-color: #fdfdff;
-  transition: background-color 0.01s;
-} */
-
 .modal__content {
   position: relative;
   background-color: #fdfdfd;

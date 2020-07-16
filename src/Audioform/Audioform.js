@@ -1,4 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { isIOS } from "react-device-detect";
+import AudioRecorder from "audio-recorder-polyfill";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMicrophone,
@@ -20,9 +23,6 @@ const Audioform = (props) => {
   const [started, setStarted] = useState(false);
   const [finished, setFinished] = useState(false);
 
-  const isiOS = /iPad|iPhone|iPod/.test(navigator.platform || "");
-
-
   const start = async () => {
     try {
       let recorder = await recordAudio();
@@ -39,10 +39,14 @@ const Audioform = (props) => {
   };
 
   const pause = () => {
-    setRecording(!recording);
-
-    if (recording) recorder.pause();
-    else recorder.resume();
+    console.log("pausing");
+    if (recording) {
+      recorder.pause();
+      setRecording(false);
+    } else {
+      recorder.resume();
+      setRecording(true);
+    }
   };
 
   const stop = async () => {
@@ -50,7 +54,7 @@ const Audioform = (props) => {
     setStarted(false);
     setFinished(true);
     const audioObj = await recorder.stop();
-    setAudioBlob(audioObj.audioBlob);
+    setAudioBlob(audioObj);
   };
 
   useEffect(() => {
@@ -68,12 +72,12 @@ const Audioform = (props) => {
   const pauseText = () => (recording ? "Pause" : "Resume");
 
   const startButton = () => {
-    if (isiOS) {
+    if (isIOS && AudioRecorder.notSupported) {
       return (
         <Fragment>
           <div
             className="recorder__button"
-            onClick={props.toggleModal}
+            // onClick={props.toggleModal}
             style={{ marginTop: "10px" }}
           >
             <FontAwesomeIcon icon={faPlay} color="#68D391" size="lg" />
@@ -154,7 +158,8 @@ const Audioform = (props) => {
 
   const playback = () => {
     if (audioBlob) {
-      const audioURL = URL.createObjectURL(audioBlob);
+      console.log("in playbacc");
+      const audioURL = audioBlob.audioURL;
       return (
         <div
           classname="audio__preview"

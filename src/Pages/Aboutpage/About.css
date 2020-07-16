@@ -48,6 +48,10 @@
   position: relative;
 }
 
+.contactinfo {
+  width: 100%;
+}
+
 .box_outside {
   justify-content: center;
   border-style: solid;
@@ -60,7 +64,7 @@
 
   padding: 15px;
   padding-top: 10px;
-  max-width: 300px;
+  max-width: 400px;
 }
 
 .box_content {
@@ -150,6 +154,14 @@ audio::-webkit-media-controls-panel {
     height: 100%;
 
     --flow-space: 3em;
+  }
+
+  .contactinfo {
+    width: fit-content;
+  }
+
+  .box_outside {
+    width: 300px;
   }
 }
 

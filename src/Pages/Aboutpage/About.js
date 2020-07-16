@@ -29,11 +29,7 @@ const About = () => {
                 </div>
                 <div className="contactinfo__number">
                   <div className="box_sub_title">Phone Number:</div>
-                  <a
-                    classname="text"
-                    href="tel:314-312-3524"
-                    rel="noopener noreferrer"
-                  >
+                  <a classname="text" href="tel:314-312-3524">
                     (314) 312-3524
                   </a>
                 </div>
@@ -59,6 +55,17 @@ const About = () => {
               Through this collective project, we invite you to find and
               preserve an object that captures part of this spectrum of
               experience. What does "Grounded" mean to you?
+            </p>
+            <p className="text--intro about_content">
+              We are a group of undergrads and medical school students from
+              Washington University in St. Louis. In the future, we hope to use
+              this archive to ask research questions about the pandemic
+              experience and design an art installation that offers a new
+              perspective on this unsettled time. If you are interested in
+              learning more about the project, or have questions about how it
+              works or why we’re engaging in this work, please reach out to us.
+              We will keep you updated via email on when your submissions will
+              be displayed!
             </p>
           </div>
         </div>
