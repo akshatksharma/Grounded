@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Modal from "./Modal.js";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import InstagramShareButton from "./InstagramShareButton.js";
@@ -33,14 +33,16 @@ const Thank = () => {
             <div className="flow">
               <p className="text">
                 Please click{" "}
-                <a
+                <Link
                   id="graphiclink"
                   aria-labelledby="graphiclink"
-                  href="//google.com"
+                  to="groundedinstagramstory.jpeg"
+                  target="_blank"
+                  download
                 >
                   here
-                </a>{" "}
-                to download a graphic to share on your Instagram story.{" "}
+                </Link>
+                {" to download a graphic to share on your Instagram story."}
               </p>
               <p className="text">
                 Don’t forget to tag us using @groundedarchive and
