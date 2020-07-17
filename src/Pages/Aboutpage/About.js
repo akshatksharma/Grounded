@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./About.css";
 
 import sound1 from "../../Samples/Planner.m4a";
@@ -123,6 +124,12 @@ const About = () => {
                 <source src={sound3} id="plant"></source>
               </audio>
             </div>
+          </div>
+          <div style={{ margin: "40px auto" }}>
+            <p className="text">
+              Feel free to go <Link to="/">back</Link> and contribute your story
+              as well.
+            </p>
           </div>
         </div>
       </div>
