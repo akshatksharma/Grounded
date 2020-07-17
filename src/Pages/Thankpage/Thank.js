@@ -34,6 +34,7 @@ const Thank = () => {
               <p className="text">
                 Please click{" "}
                 <Link
+                  className="coollink"
                   id="graphiclink"
                   aria-labelledby="graphiclink"
                   to="groundedinstagramstory.jpeg"
@@ -67,7 +68,7 @@ const Thank = () => {
               Follow the link below to complete a brief survey.
             </p>
             <a
-              className="text"
+              className="coollink coollink--yellow"
               target="_blank"
               rel="noopener noreferrer"
               href="https://forms.gle/WVSSmgzmCs6nhWaz9"
