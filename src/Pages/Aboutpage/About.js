@@ -127,8 +127,7 @@ const About = () => {
           </div>
           <div style={{ margin: "40px auto" }}>
             <p className="text">
-              Feel free to go <Link to="/">back</Link> and contribute your story
-              as well.
+              Don’t forget to contribute your story <Link to="/">here</Link>.
             </p>
           </div>
         </div>
