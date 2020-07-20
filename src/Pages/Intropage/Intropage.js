@@ -14,6 +14,7 @@ const Intropage = () => {
 
   const deviceSupport = () => {
     if (isIOS && AudioRecorder.notSupported && visible) {
+
       return (
         <Modal
           hide={toggleModal}
@@ -30,7 +31,9 @@ const Intropage = () => {
                 the best experience.
               </p>
               <CopyToClipboard text={"groundedarchive.com"}>
-                <p className="text text--special">Click here to copy the site's URL</p>
+                <p className="text text--special">
+                  Click here to copy the site's URL
+                </p>
               </CopyToClipboard>
               <p className="text">We apologize for the inconvenience.</p>
             </div>
