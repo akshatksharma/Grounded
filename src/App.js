@@ -18,17 +18,11 @@ const App = () => {
 
   const updateData = (items) => {
     const [type, data] = items;
-    console.log(typeof data);
+
     formData.set(type, data);
   };
 
   const submit = () => {
-    console.log("printing formData...");
-
-    for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
-
     // submit formdata here
 
     fetch("http://localhost:9000/submitForm", {

@@ -11,7 +11,6 @@ const Timer = (props) => {
     if (props.isRecording) {
       let interval = setInterval(() => {
         if (secsElapsed === 299) {
-          console.log("stopping");
           props.timeout();
         }
         setSecsElapsed((secsElapsed += 1));

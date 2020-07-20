@@ -13,7 +13,6 @@ const Fileform = (props) => {
   };
 
   const handleFile = (acceptedFiles) => {
-    console.log(acceptedFiles);
     setFiles(
       acceptedFiles.map((file) =>
         Object.assign(file, {
