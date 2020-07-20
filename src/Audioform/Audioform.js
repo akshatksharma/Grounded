@@ -39,7 +39,6 @@ const Audioform = (props) => {
   };
 
   const pause = () => {
-    console.log("pausing");
     if (recording) {
       recorder.pause();
       setRecording(false);
@@ -55,6 +54,7 @@ const Audioform = (props) => {
     setFinished(true);
     const audioObj = await recorder.stop();
     setAudioBlob(audioObj);
+    console.log(audioObj);
   };
 
   useEffect(() => {
@@ -158,7 +158,6 @@ const Audioform = (props) => {
 
   const playback = () => {
     if (audioBlob) {
-      console.log("in playbacc");
       const audioURL = audioBlob.audioURL;
       return (
         <div
