@@ -18,7 +18,6 @@ const App = () => {
 
   const updateData = (items) => {
     const [type, data] = items;
-
     formData.set(type, data);
   };
 

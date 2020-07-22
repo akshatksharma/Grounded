@@ -37,7 +37,7 @@ const Thank = () => {
                   className="coollink"
                   id="graphiclink"
                   aria-labelledby="graphiclink"
-                  to="groundedinstagramstory.jpeg"
+                  to="groundedinstagramstory.jpg"
                   target="_blank"
                   download
                 >

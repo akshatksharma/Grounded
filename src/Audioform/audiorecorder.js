@@ -1,4 +1,5 @@
 import AudioRecorder from "audio-recorder-polyfill";
+import mpegEncoder from "audio-recorder-polyfill/mpeg-encoder";
 import { isMobileSafari, isSafari } from "react-device-detect";
 
 const recordAudio = () =>
@@ -7,6 +8,8 @@ const recordAudio = () =>
     let mediaRecorder = null;
 
     if (isMobileSafari || isSafari) {
+      AudioRecorder.encoder = mpegEncoder;
+      AudioRecorder.prototype.mimeType = "audio/mpeg";
       mediaRecorder = new AudioRecorder(stream);
     } else mediaRecorder = new MediaRecorder(stream);
 
