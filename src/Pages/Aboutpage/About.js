@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./About.css";
 
+import picture1 from "./Picture1.png";
+import picture2 from "./Picture2.png";
+import picture3 from "./Picture3.png";
 import sound1 from "../../Samples/Planner.m4a";
 import sound2 from "../../Samples/Mom's_Garden.m4a";
 import sound3 from "../../Samples/Plant_Object_Angela.mp3";
@@ -79,7 +82,7 @@ const About = () => {
           <div className="audioPlayer">
             <div className="imageCrop">
               <img
-                src="Picture1.png"
+                src={picture1}
                 alt="A small planning notebook with a floral design on its cover. It is resting on a wodden table and is being seen from above."
                 className="audioimage"
                 id="plannerpic"
@@ -96,7 +99,7 @@ const About = () => {
           <div className="audioPlayer">
             <div className="imageCrop">
               <img
-                src="Picture2.png"
+                src={picture2}
                 alt="A garden from above on a bright, sunny day. There is a 8 foot by 8 foot garden box with various plantlife including flowers and different vegetables.  "
                 className="audioimage"
                 id="gardenpic"
@@ -112,7 +115,7 @@ const About = () => {
           <div className="audioPlayer">
             <div className="imageCrop">
               <img
-                src="Picture3.png"
+                src={picture3}
                 alt="A shot of a small plant in a green pot pot. It has spikes and thorns on its main stem coming from the ground. "
                 className="audioimage"
                 id="cactuspic"
