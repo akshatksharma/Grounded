@@ -9,7 +9,7 @@ import {
   faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
-
+import img from "./groundedinstagramstory.jpg";
 import "./Thank.css";
 
 const Thank = () => {
@@ -33,16 +33,18 @@ const Thank = () => {
             <div className="flow">
               <p className="text">
                 Please click{" "}
-                <Link
+                <a
+                  href={img}
                   className="coollink"
+                  download="groundedinstagramstory.jpg"
                   id="graphiclink"
                   aria-labelledby="graphiclink"
-                  to="groundedinstagramstory.jpg"
+                  to="/src/Pages/Thankpage/groundedinstagramstory.jpg"
                   target="_blank"
                   download
                 >
                   here
-                </Link>
+                </a>
                 {" to download a graphic to share on your Instagram story."}
               </p>
               <p className="text">
