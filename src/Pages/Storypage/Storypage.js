@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faSquare, faCheckSquare } from "@fortawesome/free-regular-svg-icons";
 import Audioform from "../../Audioform/Audioform.js";
 import Textform from "../../Textform/Textform.js";

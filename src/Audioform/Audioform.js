@@ -17,7 +17,7 @@ import "./Audioform.css";
 
 const Audioform = (props) => {
   const [recorder, setRecorder] = useState(null);
-  const [audioBlob, setAudioBlob] = useState(null);
+  const [audioObj, setAudioObj] = useState(null);
 
   const [recording, setRecording] = useState(false);
   const [started, setStarted] = useState(false);
@@ -35,7 +35,7 @@ const Audioform = (props) => {
     setRecording(true);
     setStarted(true);
     setFinished(false);
-    setAudioBlob(null);
+    setAudioObj(null);
   };
 
   const pause = () => {
@@ -53,13 +53,13 @@ const Audioform = (props) => {
     setStarted(false);
     setFinished(true);
     const audioObj = await recorder.stop();
-    setAudioBlob(audioObj.audioBlob);
-
+    setAudioObj(audioObj);
+    console.log(audioObj);
   };
 
   useEffect(() => {
-    if (audioBlob) props.dataUpdater(["audioStory", audioBlob]);
-  }, [props, audioBlob]);
+    if (audioObj) props.dataUpdater(["audioStory", audioObj.audioBlob]);
+  }, [props, audioObj]);
 
   const recordText = () => {
     let text = recording ? "Recording..." : null;
@@ -157,8 +157,8 @@ const Audioform = (props) => {
   };
 
   const playback = () => {
-    if (audioBlob) {
-      const audioURL = audioBlob.audioURL;
+    if (audioObj) {
+      const audioURL = audioObj.audioURL;
       return (
         <div
           classname="audio__preview"

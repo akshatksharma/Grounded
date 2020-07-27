@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Modal from "./Modal.js";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import InstagramShareButton from "./InstagramShareButton.js";
@@ -41,7 +41,7 @@ const Thank = () => {
                   aria-labelledby="graphiclink"
                   to="/src/Pages/Thankpage/groundedinstagramstory.jpg"
                   target="_blank"
-                  download
+                  rel="noopener noreferrer"
                 >
                   here
                 </a>
