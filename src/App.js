@@ -24,7 +24,7 @@ const App = () => {
   const submit = () => {
     // submit formdata here
 
-    fetch("http://localhost:9000/submitForm", {
+    fetch("/submitForm", {
       method: "POST",
       headers: { enctype: "multipart/form-data" },
       body: formData,
