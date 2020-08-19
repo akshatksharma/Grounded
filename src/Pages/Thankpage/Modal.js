@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { isMobile } from "react-device-detect";
 import "./Modal.css";
 
-const Modal = ({ hide, bkg, title, body }) => {
+const Modal = ({ hide, bkg, title, body, style = {} }) => {
   const node = useRef(null);
   const closeButton = useRef(null);
 
@@ -12,7 +12,6 @@ const Modal = ({ hide, bkg, title, body }) => {
   };
 
   useEffect(() => {
-    // node.current.focus();
     document.addEventListener("mousedown", handleClick);
 
     return () => {
@@ -28,6 +27,7 @@ const Modal = ({ hide, bkg, title, body }) => {
             ? "modal__content modal__content--mobile flow"
             : "modal__content flow"
         }
+        style={style.body}
         role="alertdialog"
         aria-modal
         tabIndex="0"
@@ -52,7 +52,12 @@ const Modal = ({ hide, bkg, title, body }) => {
               ></polygon>
             </svg>
           </button>
-          <h2 className="header__title">{title}</h2>
+          <div className="header__text">
+            <h2 style={style.title} className="header__title">
+              {title}
+            </h2>
+            <div className="header__background"></div>
+          </div>
         </div>
         <div className="modal__body">{body}</div>
       </div>

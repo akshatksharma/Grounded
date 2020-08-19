@@ -8,11 +8,16 @@ body {
 div.transition-group {
   position: relative;
 }
-section.route-section {
+
+.route-section {
   position: absolute;
   width: 100%;
   top: 0;
   left: 0;
+}
+
+.page__container {
+  position: relative;
 }
 
 .fade-enter {
