@@ -10,6 +10,15 @@ var debug = require('debug')('api:server');
 //var https = require('https')
 var http = require('http')
 var fs = require('fs');
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'groundedarchives@gmail.com',
+        pass: 'StoryShare3'
+    }
+});
 
 var storage = multer.diskStorage(
     {
@@ -70,7 +79,28 @@ app.get('/', (req, res) => {
 });
 
 app.post('/submitForm', generateCode, function (req, res, next) {
-    //insert user data into mysql
+    if (req.body.textStory) {
+        const data = req.body.textStory;
+        fs.writeFile("uploads/" + app.locals.code + ".txt", data, (err) => {
+            if (err) console.log(err);
+        });
+    }
+
+    var mailOptions = {
+        from: 'Grounded Archive Team <groundedarchives@gmail.com>',
+        to: req.body.email,
+        subject: 'Thank you for your submission!',
+        text: 'Hello,\n\nThank you for contributing to the Grounded Archive! Your submission has been successfully processed. Here is our short survey if you haven\'t filled it out already.\n\nIf you like our project, please support us here to keep our project going.\n\nThank You,\n\nGrounded Archive Team\nhttps://gowustl-my.sharepoint.com/:w:/g/personal/lisahan_wustl_edu/Edb4WYQRNWNJr3_074YmF_IB3ikcrviPFbj4WKqkDzlUJQ?e=4eFZwt'
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+
 
     res.send({ success: true, email: req.body, files: req.files });
 });
