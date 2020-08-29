@@ -12,6 +12,7 @@ import Storypage from "./Pages/Storypage/Storypage.js";
 import Emailpage from "./Pages/Emailpage/Emailpage.js";
 import Footer from "./Footer/Footer.js";
 import Thank from "./Pages/Thankpage/Thank.js";
+import FAQ from "./Pages/FAQpage/FAQ.js";
 
 const App = () => {
   let formData = new FormData();
@@ -50,6 +51,11 @@ const App = () => {
         >
           <section className="route-section">
             <Switch>
+            <Route exact path="/faq">
+                <Navbar />
+                <FAQ/>
+                <Footer />
+              </Route>
               <Route exact path="/about">
                 <Navbar />
                 <About />
