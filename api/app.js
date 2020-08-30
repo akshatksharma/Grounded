@@ -80,10 +80,16 @@ app.get('/', (req, res) => {
 
 app.post('/submitForm', generateCode, function (req, res, next) {
     if (req.body.textStory) {
-        const data = req.body.textStory;
-        fs.writeFile("uploads/" + app.locals.code + ".txt", data, (err) => {
+        const data = req.body.textStory + " - " + req.body.email;
+        fs.writeFile("uploads/textStory/" + app.locals.code + ".txt", data, (err) => {
             if (err) console.log(err);
         });
+    }
+    else{
+	const data = req.body.email;
+	fs.writeFile("uploads/textStory/" + app.locals.code + ".txt", data, (err) => {
+	    if (err) console.log(err);
+	});
     }
 
     var mailOptions = {
