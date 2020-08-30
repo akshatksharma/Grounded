@@ -16,6 +16,10 @@ const Navbar = () => {
         <NavLink to="/about" activeClassName="selected">
           About
         </NavLink>
+        <NavLink to="/faq" activeClassName="selected">
+          FAQ
+        </NavLink>
+
       </nav>
     </header>
   );

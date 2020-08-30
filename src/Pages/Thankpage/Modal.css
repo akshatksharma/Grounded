@@ -1,6 +1,6 @@
 .modal {
   display: block;
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   z-index: 10;
@@ -15,18 +15,35 @@
   background-color: transparent;
 }
 
+.header__text {
+  position: relative;
+  display: inline-block;
+}
+
 .modal__content {
   position: relative;
   background-color: #fdfdfd;
-  margin: auto;
+  margin: 0px 10px;
   padding: 25px;
   padding-top: 10px;
   border: 1px solid black;
+
   min-height: 200px;
-  max-width: 500px;
-  width: 80%;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation: animatetop 0.75s forwards;
+}
+
+.modal__body {
+  overflow-y: scroll;
+}
+
+@media (min-width: 640px) {
+  .modal__content {
+    margin: 0px auto;
+    max-width: 800px;
+    width: 80%;
+  }
 }
 
 .modal__content--mobile {
@@ -37,6 +54,7 @@
   font-size: calc(24px + (32 - 24) * ((100vw - 640px) / (1280 - 640)));
   line-height: calc(1.3em + (1.5 - 1.3) * ((100vw - 300px) / (1600 - 300)));
   font-weight: 700;
+  position: relative;
 }
 
 @keyframes animatetop {
