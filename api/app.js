@@ -12,6 +12,10 @@ var http = require('http')
 var fs = require('fs');
 var nodemailer = require('nodemailer');
 
+// HELPER FUNCTIONS/OBJECTS:
+
+// Basically an email object that sends confirmation emails once someone makes a submission
+// TODO: store username and password as environment variables for security
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -20,6 +24,8 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+// Used to store image and audio files
+// TODO: use S3 rather than Ec2 storage
 var storage = multer.diskStorage(
     {
         destination: function (req, file, cb) {
@@ -36,6 +42,9 @@ var storage = multer.diskStorage(
 
 var upload = multer({ storage: storage });
 
+
+// Create an 8 digit alphanumeric id for each submission and then store audio / image files to storage
+// TODO: make sure this will work if simultaneous submissions occur
 function generateCode(req, res, next) {
     var firstPart = (Math.random() * 1679616) | 0;
     var secondPart = (Math.random() * 1679616) | 0;
@@ -47,9 +56,11 @@ function generateCode(req, res, next) {
 }
 
 
-//var indexRouter = require('./routes/index');
+// END HELPER FUNCTIONS/OBJECTS
+
 var usersRouter = require('./routes/users');
 
+// Create the backend "app" that interacts with frontend
 var app = express();
 
 app.use(express.static(path.join(__dirname, 'build')));
@@ -58,6 +69,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// Specify from what url we expect POST requests to come
 app.use(cors({
     origin: 'https://groundedarchive.com',
     credentials: true
@@ -71,14 +83,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-//app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+
+// Serves index.html
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+// This function if run once the user hits the submit button
 app.post('/submitForm', generateCode, function (req, res, next) {
+    // check if the user did a text submission rather than audio
+    // save text submission and / or user email to storage
     if (req.body.textStory) {
         const data = req.body.textStory + " - " + req.body.email;
         fs.writeFile("uploads/textStory/" + app.locals.code + ".txt", data, (err) => {
@@ -92,6 +108,8 @@ app.post('/submitForm', generateCode, function (req, res, next) {
 	});
     }
 
+    // Send confirmation email
+    // TODO: check Grounded's email to resolve errors
     var mailOptions = {
         from: 'Grounded Archive Team <groundedarchives@gmail.com>',
         to: req.body.email,
@@ -99,6 +117,7 @@ app.post('/submitForm', generateCode, function (req, res, next) {
         text: 'Hello,\n\nThank you for contributing to the Grounded Archive! Your submission has been successfully processed. Here is our short survey if you haven\'t filled it out already.\n\nIf you like our project, please support us here to keep our project going.\n\nThank You,\n\nGrounded Archive Team\nhttps://gowustl-my.sharepoint.com/:w:/g/personal/lisahan_wustl_edu/Edb4WYQRNWNJr3_074YmF_IB3ikcrviPFbj4WKqkDzlUJQ?e=4eFZwt'
     };
 
+    // Uses the email object we created above to send the email
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
@@ -128,94 +147,3 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000);
-
-//module.exports = app;
-/*
-var port = normalizePort(process.env.PORT || '9000');
-app.set('port', port);
-
-/**
- * Create HTTPS server.
- 
-
-//var server = http.createServer(app);
-
-
-var server = https.createServer({
-	key: fs.readFileSync('./aws_key.pem'),
-	cert: fs.readFileSync('./aws_cert.pem'),
-	ca: fs.readFileSync('./aws_cert_chain.pem'),
-	passphrase: 'StoryShare3'
-}, app);
-
-
-
-
-/**
- * Listen on provided port, on all network interfaces.
- 
-
-server.listen(port);
-//server.on('error', onError);
-server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- 
-
-function normalizePort(val) {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
-
-/**
- * Event listener for HTTP server "error" event.
- 
-
-function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
-
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-}
-
-/**
- * Event listener for HTTP server "listening" event.
-
-
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-}
-*/
