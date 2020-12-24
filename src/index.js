@@ -6,6 +6,11 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./Scroll.js";
 
+// This is the standard React App structure
+
+// <ScrollToTop />
+// Component that allows user to scroll up by clicking on a button
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

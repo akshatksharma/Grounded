@@ -15,14 +15,33 @@ import Thank from "./Pages/Thankpage/Thank.js";
 import FAQ from "./Pages/FAQpage/FAQ.js";
 
 const App = () => {
+  // @State hidden: Boolean
+  // Controls whether the popup for the Guiding Questions section is hidden or not. It is passed in as a prop to the Object page, so that a button press in it can trigger the modal to overlay the entire screen
+
   const [hidden, setHidden] = useState(false);
+
+  // hidePage - sets the state of hidden
+
+  let hidePage = () => {
+    setHidden(!hidden);
+  };
+
+  // @Var formData : Object
+  // the core object that will be sent to the backend
+  // it will encompass all of the data, such as text, audio blob, and image blobs
 
   let formData = new FormData();
 
+  // updateData - Updates the formData object. Associates the data with the type of data it is
+  //  @param items : [Any] - An array of length 2. First has the type of object, second has the object itself
+
   const updateData = (items) => {
+    // type: String, data: Any
     const [type, data] = items;
     formData.set(type, data);
   };
+
+  //  @function submit - submits the formData object to the backend via the fetch() API
 
   const submit = () => {
     // submit formdata here
@@ -41,13 +60,12 @@ const App = () => {
     formData = new FormData();
   };
 
+  // location -- used for the cool fade effect™️
+
   let location = useLocation();
 
-  let hidePage = () => {
-    setHidden(!hidden);
-  };
-
   let content = (
+    // honestly, ignore the whole CSSTransition / TransitionGroup items; they are just for the fade effect
     <React.Fragment>
       <TransitionGroup className="transition-group">
         <CSSTransition
@@ -56,10 +74,13 @@ const App = () => {
           classNames={"fade"}
         >
           <div className="route-section">
+            {/* This switch statement is how routing works. Each Route corresponds to a different URL (ex: /faq --> groundedarchive.org/faq */}
+            {/* Each route has a Navbar and Footer, and some content in between */}
+            {/* The content in between is in the /Pages folder in this repository. Look at the imports at the start of this file for more info */}
             <Switch>
-            <Route exact path="/faq">
+              <Route exact path="/faq">
                 <Navbar />
-                <FAQ/>
+                <FAQ />
                 <Footer />
               </Route>
               <Route exact path="/about">
@@ -73,8 +94,12 @@ const App = () => {
                 <Footer />
               </Route>
               <Route exact path="/">
+                {/* The home page section */}
                 <Navbar />
                 <main>
+                  {/* Page is composed of many sections */}
+                  {/* Each section can be hidden based on the hidden state is == true. A hidden class is attached to do so. */}
+                  {/* Fade objects are just for the Fade effect */}
                   <section className={"page__container"}>
                     <Intropage />
                   </section>
@@ -84,6 +109,9 @@ const App = () => {
                     }
                   >
                     <Fade>
+                      {/* Component Objectpage */}
+                      {/* @prop updateData -- function that allows Objectpage to update the formData object here with image data  */}
+                      {/* Section where users can upload their own images */}
                       <Objectpage
                         updateData={updateData}
                         setHidden={hidePage}
@@ -96,6 +124,9 @@ const App = () => {
                     }
                   >
                     <Fade>
+                      {/* Component Storypage */}
+                      {/* @prop updateData -- function that allows Storyage to update the formData object here with audio data or text data */}
+                      {/* Section where users can upload their own audio or text */}
                       <Storypage updateData={updateData} />
                     </Fade>
                   </section>
@@ -105,6 +136,9 @@ const App = () => {
                     }
                   >
                     <Fade>
+                      {/* Component Emailpage */}
+                      {/* @prop updateData -- function that allows Emailpage to update the formData object here with name and email info */}
+                      {/* Section where users can put their names and emails */}
                       <Emailpage updateData={updateData} submit={submit} />
                     </Fade>
                   </section>
