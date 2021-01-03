@@ -5,12 +5,27 @@ import AudioRecorder from "audio-recorder-polyfill";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import "./Intropage.css";
 
+
+// Intropage
+// React component for the Introductory / landing section of the site. If the user is on a unsupported platform (i.e chrome on iOS) then a popup shows up
+
 const Intropage = () => {
+
+  // ********* @State visible: Boolean *********
+  // Controls whether the popup for the disclaimer popuip is hidden or not. 
+
   const [visible, setVisible] = useState(true);
+
+  // toggleModal() : Function - sets the state of visible. 
+  // Passed into the modal as a prop because it's attached to an onClick event on the close button of the modal 
 
   const toggleModal = () => {
     setVisible(!visible);
   };
+
+
+  // hidePage() : JSX compontent - controls whether modal is shown or not based on the device idenitty, its ability to record, and the visible state
+  // if device not supported, then will return the modal, else will return nothing
 
   const deviceSupport = () => {
     if (isIOS && AudioRecorder.notSupported && visible) {
