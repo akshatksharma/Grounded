@@ -4,11 +4,38 @@ import { Redirect } from "react-router-dom";
 import useForm from "../Hooks/useForm";
 import "./Emailform.css";
 
+/**
+ * 
+ * @description
+ * Emailform
+ * Handles the email submission section of the main page.
+ * 
+ * @props
+ *
+ * @param {Function} dataUpdater -- function that appends some data to a formData object for a submission
+ * @param {Function} submitPage -- function to submit formData object to backend
+ */
+
 const Emailform = (props) => {
-  const [isRelease, setIsRelease] = useState(false);
+
+  /**
+   * @state {Boolean} submitted - has user clicked submit or not
+   * @ref {Reference} - reference to the form. Used to reset form on submit
+   * @ref {Reference} - reference to the submit button. Used to style it as needed.
+   * @state {Object of Any type} values - an object that holds all of the values in the form
+   * @state {Boolean} - emailValid - whether the email input is valid
+   * @state {Function} - handleChange - function that updates value object whenever form inputs are changed
+   * @state {Function} - handleSubmit - function that handles the submission action of the fomr
+   */
+
   const [submitted, setSubmitted] = useState(false);
   const form = useRef();
   const submitRef = useRef();
+
+
+  // useForm is a react hook that handles the logic of the form
+  // when it's wired to the inputs, it will record all of their values, along with if they are valid or not
+  // takes in the function to call when submitting form, in this case, it's submit()
   const {
     values,
     emailValid,
@@ -17,6 +44,12 @@ const Emailform = (props) => {
     handleSubmit,
   } = useForm(submit);
 
+  /**
+   * submit()
+   * if email not valid, applies necessary styles and does not submit 
+   * otherwise updates the submission formData object with the values in the form
+   * in this case, the only value is the email form, so that will be added
+   */
   function submit() {
     if (!emailValid) {
       submitRef.current.classList.add("disabled");
@@ -25,17 +58,23 @@ const Emailform = (props) => {
       return;
     }
 
+    // email is valid, so need to update formData object w/ the values stored by the useForm hook 
+
     Object.entries(values).forEach(([key, value]) => {
       props.dataUpdater([key, value]);
     });
+
+    // submits the formData in the App.js to the backend
     props.submitPage();
 
+    // sets form back to default empty values
     clearValues();
-    setIsRelease(false);
     form.current.reset();
     setSubmitted(true);
   }
 
+  // effect hook to update the style of the form inputs as the user types
+  // if not an email, then styled with red
   useEffect(() => {
     if (emailValid) {
       submitRef.current.classList.remove("disabled");
@@ -49,6 +88,8 @@ const Emailform = (props) => {
     <div className="box__content">
       <form className="emailForm flow" ref={form}>
         <div className="emailForm__inputs flow">
+          {/* input is controlled by the useForm hook */}
+          {/* whenever its value changes, the hook updates itself */}
           <div>
             <input
               className={emailValid || !values.email ? null : "error"}
@@ -75,6 +116,7 @@ const Emailform = (props) => {
         </div>
         <div className="submitWrapper">
           <label htmlFor="submit"></label>
+          {/* whenever form submitted, call hook's handleSubmit function */}
           <button
             ref={submitRef}
             id="submit"
@@ -86,6 +128,7 @@ const Emailform = (props) => {
           </button>
         </div>
       </form>
+      {/* If submitted form, then redirect to thank you page */}
       {submitted ? <Redirect to="/thank" /> : null}
     </div>
   );

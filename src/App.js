@@ -14,34 +14,46 @@ import Footer from "./Footer/Footer.js";
 import Thank from "./Pages/Thankpage/Thank.js";
 import FAQ from "./Pages/FAQpage/FAQ.js";
 
+/**
+ * 
+ * @description
+ * 
+ * App
+ * The main "hub" for site. Handles routing to different pages via the React Router package. 
+ * Also contains the central logic related to sending data to backend.   
+ */
+
+
 const App = () => {
-  // @State hidden: Boolean
+
+  // ********* @State hidden: Boolean *********
   // Controls whether the popup for the Guiding Questions section is hidden or not. It is passed in as a prop to the Object page, so that a button press in it can trigger the modal to overlay the entire screen
 
   const [hidden, setHidden] = useState(false);
 
-  // hidePage - sets the state of hidden
+  // hidePage() : Function - sets the state of hidden
 
   let hidePage = () => {
     setHidden(!hidden);
   };
 
-  // @Var formData : Object
+  // formData : Object
   // the core object that will be sent to the backend
   // it will encompass all of the data, such as text, audio blob, and image blobs
 
   let formData = new FormData();
 
-  // updateData - Updates the formData object. Associates the data with the type of data it is
+  // updateData(): Function - Updates the formData object. Associates the data with the type of data it is
   //  @param items : [Any] - An array of length 2. First has the type of object, second has the object itself
 
   const updateData = (items) => {
-    // type: String, data: Any
+    // type: String
+    // data: Object
     const [type, data] = items;
     formData.set(type, data);
   };
 
-  //  @function submit - submits the formData object to the backend via the fetch() API
+  //  submit() : Function - submits the formData object to the backend via the fetch() API
 
   const submit = () => {
     // submit formdata here
@@ -65,7 +77,7 @@ const App = () => {
   let location = useLocation();
 
   let content = (
-    // honestly, ignore the whole CSSTransition / TransitionGroup items; they are just for the fade effect
+    // Honestly, ignore the whole CSSTransition / TransitionGroup items; they are just for the fade effect
     <React.Fragment>
       <TransitionGroup className="transition-group">
         <CSSTransition
@@ -79,28 +91,33 @@ const App = () => {
             {/* The content in between is in the /Pages folder in this repository. Look at the imports at the start of this file for more info */}
             <Switch>
               <Route exact path="/faq">
+                {/* The FAQ page */}
                 <Navbar />
                 <FAQ />
                 <Footer />
               </Route>
               <Route exact path="/about">
+                {/* The about page */}
                 <Navbar />
                 <About />
                 <Footer />
               </Route>
               <Route exact path="/thank">
+                {/* The thank you page */}
                 <Navbar />
                 <Thank />
                 <Footer />
               </Route>
               <Route exact path="/">
-                {/* The home page section */}
+                {/* The home page */}
                 <Navbar />
                 <main>
                   {/* Page is composed of many sections */}
                   {/* Each section can be hidden based on the hidden state is == true. A hidden class is attached to do so. */}
-                  {/* Fade objects are just for the Fade effect */}
+                  {/* NOTE: <Fade/> objects are just for the Fade effect and can be ignored */}
+
                   <section className={"page__container"}>
+                    {/* Intropage: React Component */}
                     <Intropage />
                   </section>
                   <section
@@ -109,7 +126,7 @@ const App = () => {
                     }
                   >
                     <Fade>
-                      {/* Component Objectpage */}
+                      {/* Objectpage: React Component */}
                       {/* @prop updateData -- function that allows Objectpage to update the formData object here with image data  */}
                       {/* Section where users can upload their own images */}
                       <Objectpage
@@ -124,7 +141,7 @@ const App = () => {
                     }
                   >
                     <Fade>
-                      {/* Component Storypage */}
+                      {/* Storypage: React Component  */}
                       {/* @prop updateData -- function that allows Storyage to update the formData object here with audio data or text data */}
                       {/* Section where users can upload their own audio or text */}
                       <Storypage updateData={updateData} />
@@ -136,7 +153,7 @@ const App = () => {
                     }
                   >
                     <Fade>
-                      {/* Component Emailpage */}
+                      {/* Emailpage: React Component */}
                       {/* @prop updateData -- function that allows Emailpage to update the formData object here with name and email info */}
                       {/* Section where users can put their names and emails */}
                       <Emailpage updateData={updateData} submit={submit} />

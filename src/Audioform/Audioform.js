@@ -15,7 +15,27 @@ import Timer from "./Timer/Timer.js";
 import recordAudio from "./audiorecorder.js";
 import "./Audioform.css";
 
+/**
+ *
+ * @description
+ *
+ * Audioform()
+ * React component for the Form that controls the audio widget in the Storypage component
+ * audiorecorder.js controls the lower level recording implementation, while this file provides a UI for it
+ * 
+ * @props
+ *
+ * @param {Function} dataUpdater -- function that appends some data to a formData object for a submission
+ */
+
 const Audioform = (props) => {
+  /**
+   * @state {object} recorder - a WebRTC recorder
+   * @state {object} audioObj - the actual audio file
+   * @state {boolean} recording - whether user is recording
+   * @state {boolean} started - whether user has started (paused or not)
+   * @state {boolean} finished - whether user has finished recording
+   */
   const [recorder, setRecorder] = useState(null);
   const [audioObj, setAudioObj] = useState(null);
 
@@ -23,6 +43,11 @@ const Audioform = (props) => {
   const [started, setStarted] = useState(false);
   const [finished, setFinished] = useState(false);
 
+  /**
+   * start()
+   * Function that starts recording by grabbing hold of WebRTC recorder and starts recording
+   * Also sets states as appropriate
+   */
   const start = async () => {
     try {
       let recorder = await recordAudio();
@@ -38,6 +63,11 @@ const Audioform = (props) => {
     setAudioObj(null);
   };
 
+  /**
+   * pause()
+   * Function that pauses recording
+   * Also sets states as appropriate
+   */
   const pause = () => {
     if (recording) {
       recorder.pause();
@@ -48,6 +78,11 @@ const Audioform = (props) => {
     }
   };
 
+  /**
+   * stop()
+   * Function that stops recording and sets the resulting audio blob in its state
+   * Also sets other states as appropriate
+   */
   const stop = async () => {
     setRecording(false);
     setStarted(false);
@@ -57,10 +92,13 @@ const Audioform = (props) => {
     setAudioObj(audioObj);
   };
 
+  // whenever audio state is set, call the dataUpdater to append this audio blob to the submission's formData 
   useEffect(() => {
     if (audioObj) props.dataUpdater(["audioStory", audioObj.audioBlob]);
   }, [props, audioObj]);
 
+
+  // setting different text / UI based on the recording state of the app
   const recordText = () => {
     let text = recording ? "Recording..." : null;
     if (!recording && started) text = "Paused";
@@ -71,6 +109,7 @@ const Audioform = (props) => {
 
   const pauseText = () => (recording ? "Pause" : "Resume");
 
+  // if device doesnt support browser recording, don't make button start recording 
   const startButton = () => {
     if (isIOS && AudioRecorder.notSupported) {
       return (
@@ -99,6 +138,7 @@ const Audioform = (props) => {
     }
   };
 
+  // making mini components for differnt buttons in the app to simplify logic later down
   const redoButton = (
     <button className="recorder__button" onClick={start}>
       <FontAwesomeIcon icon={faRedo} size="lg" />
@@ -125,6 +165,9 @@ const Audioform = (props) => {
       <p className="text bold">{pauseText()}</p>
     </button>
   );
+
+  // mini compontent for all of the controls in the audio widget
+  // based on recording state, will show different button components
 
   const controlBar = () => {
     if (recording && started) {
@@ -156,7 +199,11 @@ const Audioform = (props) => {
     } else return startButton();
   };
 
+  // component for the audio playback 
+
   const playback = () => {
+
+    // only render something if there is an audioObject to actually render
     if (audioObj) {
       const audioURL = audioObj.audioURL;
       return (
@@ -185,6 +232,7 @@ const Audioform = (props) => {
   let content = (
     <Fragment>
       <div className="recorder flow" aria-label="audio recorder">
+        {/* Show timer if recording, finished or started */}
         {recording || finished || started ? (
           <Timer
             isRecording={recording}
@@ -193,6 +241,7 @@ const Audioform = (props) => {
             timeout={stop}
           />
         ) : null}
+        {/* show different graphic based on recording state by changing the css classes used */}
         <div
           className={
             recording

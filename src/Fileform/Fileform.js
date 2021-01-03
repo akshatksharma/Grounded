@@ -3,15 +3,42 @@ import { useDropzone } from "react-dropzone";
 
 import "./Fileform.css";
 
+/**
+ * @description
+ *
+ * Fileform
+ * React component for the image upload section of the main page. Users need to be able upload images here
+ * 
+ * @props
+ *
+ * @param {Function} dataUpdater -- function that appends some data to a formData object for a submission
+ *
+ */
+
 const Fileform = (props) => {
+  /**
+   * @state {Array} files
+   * Array of size 1 that contains the image that the user will upload
+   */
   const [files, setFiles] = useState([]);
 
+  /**
+   * truncate()
+   * @param {String} str - string to be truncated
+   * @param {Int} n - how many letters before truncation
+   */
   const truncate = (str, n) => {
     if (!str) return;
     const [name, ext] = str.split(".");
     return name.length > n ? `${name.substr(0, n - 1)}[...].${ext}` : str;
   };
 
+  /**
+   * handleFile()
+   * @param {[File]} acceptedFiles
+   * Maps the array of files into a new array of objects that contain the file as well as a preview for it
+   * The file itself is sent to App.js to be inserted into the submission formObject
+   */
   const handleFile = (acceptedFiles) => {
     setFiles(
       acceptedFiles.map((file) =>
@@ -22,6 +49,9 @@ const Fileform = (props) => {
     );
     props.dataUpdater(["image", acceptedFiles[0]]);
   };
+
+  // extracting the necessary functions and states out of the useDropzone package
+  // dropZone enables drag n drop functionality for file upload
 
   const {
     getRootProps,
@@ -35,7 +65,7 @@ const Fileform = (props) => {
     onDrop: handleFile,
   });
 
-  // styles
+  // styles for the dropzone area
   const baseStyle = {
     flex: 1,
     display: "flex",
@@ -63,6 +93,8 @@ const Fileform = (props) => {
     borderColor: "#ff1744",
   };
 
+  // setting the appropriate styles based on whether the file is an image or not
+
   const style = useMemo(
     () => ({
       ...baseStyle,
@@ -81,7 +113,8 @@ const Fileform = (props) => {
     ]
   );
 
-  // render
+  // rendering the main content
+  // uses the dropZone states to render differnt content to the user
 
   let content = (
     <div className="imageUpload">
@@ -91,6 +124,7 @@ const Fileform = (props) => {
           style,
         })}
       >
+        {/* the actual dropzone file input */}
         <input {...getInputProps()} />
 
         {isDragActive ? (
@@ -99,6 +133,7 @@ const Fileform = (props) => {
           <p>Click to choose an image, or drag it here</p>
         )}
       </div>
+      {/* mapping the one file the user uploads to a small preview under the upload */}
       {files.map((file) => (
         <div className="thumbnail" key={file.name} aria-label="Image Preview">
           <div className="thumb">

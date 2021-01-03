@@ -1,10 +1,30 @@
 import React, { useState } from "react";
-import Fileform from "../../Fileform/Fileform.js";
+import Fileform from "../../Footer/Fileform/Fileform.js";
 import Modal from "../Thankpage/Modal";
 import "./Objectpage.css";
 
+
+/**
+ * @description 
+ * 
+ * Objectpage
+ * React component for the image upload section of the main page. Users need to be able upload images here 
+ * Contains the <FileForm /> React component, which handles the actual image upload
+ * 
+ */
+
+
 const Objectpage = (props) => {
+
+  /**
+   * @state {Boolean} visible
+   * Controls whether the popup for the disclaimer popuip is hidden or not. 
+   */
+
   const [visible, setVisible] = useState(false);
+
+  // toggleModal() : Function - sets the state of visible. 
+  // Passed into the modal as a prop because it's attached to an onClick event on the close button of the modal 
 
   const toggleModal = () => {
     setVisible(!visible);
@@ -13,6 +33,8 @@ const Objectpage = (props) => {
 
   let content = (
     <div className="page page--object" role="region" aria-label="Upload object">
+
+      {/* if the visible State is true, then show the modal, otherwise, show nothing */}
       {visible ? (
         <Modal
           hide={toggleModal}
@@ -91,8 +113,10 @@ const Objectpage = (props) => {
             <p className="text">Submit an image of your object.</p>
           </div>
         </div>
+        {/* @prop dataUpdater -- references the updateData function in App.js, so that image can be added to the submission  */}
         <Fileform dataUpdater={props.updateData} />
         <div className="guidelines">
+          {/* triggers toggleModal onClick, which changes the visible State, causing the modal to popup */}
           <button onClick={toggleModal} style={{ padding: "20px" }}>
             Having trouble thinking of an object? Click here
           </button>

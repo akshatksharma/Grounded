@@ -9,6 +9,10 @@ import sound1 from "../../Samples/Planner.m4a";
 import sound2 from "../../Samples/Mom's_Garden.m4a";
 import sound3 from "../../Samples/Plant_Object_Angela.mp3";
 
+// About
+// React component for the About page. Simply returns the content of the page as JSX. Includes section with sample stories, so imported pictures/sounds above
+
+
 const About = () => {
   let content = (
     <React.Fragment>

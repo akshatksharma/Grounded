@@ -3,19 +3,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquare, faCheckSquare } from "@fortawesome/free-regular-svg-icons";
 import Audioform from "../../Audioform/Audioform.js";
 import Textform from "../../Textform/Textform.js";
-
 import "./Storypage.css";
 
+/**
+ * @description
+ * 
+ * Storypage
+ * React component for the audio recording upload section of the site. 
+ * Includes the <Audioform/> component to actually record the audio and <Textform/> to show a text form, depending on user preference
+ * 
+ */
+
+
 const Storypage = (props) => {
+
+  /**
+   * @state {Boolean} iosAudio -- if user is an iOS device
+   * @state {Boolean} usingAudio -- if user is actually recording
+   */
   const [iosAudio, setiosAudio] = useState(null);
   const [usingAudio, setUsingAudio] = useState(true);
 
+  /**
+   * toggleAudio()
+   * toggles the usingAudio state
+   * called whenever user presses play/pause/stop etc
+   */
   const toggleAudio = () => {
     setUsingAudio(!usingAudio);
   };
+
+  /**
+   * handleKey()
+   * hacky workaround to enable keyboard support for the custom checkbox that lets user pick between audio and text
+   * @param {Event} event 
+   */
   const handleKey = (event) => {
     if (event.key === "Enter") setUsingAudio(!usingAudio);
   };
+
 
   let content = (
     <div className="page page--story" role="region" aria-label="Record story">
@@ -37,6 +63,7 @@ const Storypage = (props) => {
             </p>
           </div>
         </div>
+        {/* If usingAudio state is true, then show audio form, otherwise show text form */}
         {usingAudio ? (
           <React.Fragment>
             <Audioform

@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./FAQ.css";
 
+// FAQ
+// React component for the FAQ page. Simply returns the content of the page as JSX.
+
 const FAQ = () => {
   let content = (
     <React.Fragment>
